@@ -448,304 +448,304 @@
     </div>
 
     <script>
-        // --- DATA INSTRUMEN (TEMPLATE) ---
-        const instrumentData = {
-          "1-1": { bukti: [{id:"b1_1_1", val:"RPP dan Kurikulum"}, {id:"b1_1_2", val:"Observasi Kelas"}, {id:"b1_1_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_1_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_1_5", val:"Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas"}, {id:"b1_1_6", val:"Catatan anekdotal/Jurnal Pendidik"}, {id:"b1_1_7", val:"Hasil survei kepuasan peserta didik"}], wawancara: "Pendidik menunjukkan pemahaman mendalam tentang latar belakang unik setiap peserta didik dan secara konsisten proaktif menciptakan iklim inklusif. Peserta didik (termasuk yang minoritas/pendiam) mengonfirmasi merasa sangat dihargai, didengar, dan nyaman berekspresi tanpa takut dihakimi.", observasi: "Terobservasi interaksi yang sangat cair, hangat, dan dua arah di dalam maupun di luar kelas. Pendidik mahir menggunakan bahasa positif, memvalidasi perasaan peserta didik, dan memberikan kesempatan setara. Tercipta 'psychological safety' yang tinggi di lingkungan belajar." },
-          "1-2": { bukti: [{id:"b1_2_1", val:"RPP dan Kurikulum"}, {id:"b1_2_2", val:"Observasi Kelas"}, {id:"b1_2_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_2_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_2_5", val:"Observasi interaksi pendidik–peserta didik"}, {id:"b1_2_6", val:"Contoh umpan balik tertulis (feedback)"}, {id:"b1_2_7", val:"Portofolio progres peserta didik"}], wawancara: "Pendidik secara sistematis merancang KBM yang menantang namun aman. Pendidik terampil memberi umpan balik konstruktif yang fokus pada proses dan usaha. Peserta didik menyatakan termotivasi oleh kegagalan, memandangnya sebagai bagian dari proses belajar, dan berani mencoba lagi.", observasi: "Pendidik secara konsisten memberikan 'growth mindset praise' (apresiasi pada proses, strategi, dan kegigihan, bukan hanya hasil akhir/kecerdasan). Peserta didik terlihat antusias mencoba tantangan baru, tidak takut salah, dan saling mendukung proses belajar temannya." },
-          "1-3": { bukti: [{id:"b1_3_1", val:"RPP dan Kurikulum (misal: diferensiasi)"}, {id:"b1_3_2", val:"Observasi Kelas"}, {id:"b1_3_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_3_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_3_5", val:"Observasi interaksi pendidik–peserta didik"}, {id:"b1_3_6", val:"Catatan/Program bimbingan khusus"}, {id:"b1_3_7", val:"Portofolio kemajuan peserta didik"}], wawancara: "Pendidik memiliki data/peta kebutuhan peserta didik yang rinci dan proaktif menawarkan bantuan sebelum diminta. Peserta didik (yang membutuhkan dukungan) merasa sangat dipahami, didukung, dan tidak merasa terstigma. Ada program bimbingan individual yang terstruktur.", observasi: "Terobservasi pendidik melakukan pendampingan individual secara intensif namun tetap inklusif (tidak mengganggu KBM). Ada 'peer tutoring' (tutor sebaya) yang terstruktur dan difasilitasi pendidik. Peserta didik lain menunjukkan empati dan proaktif membantu temannya." },
-          "1-4": { bukti: [{id:"b1_4_1", val:"RPP/Modul Ajar yang eksplisit mencantumkan KSE"}, {id:"b1_4_2", val:"Observasi Kelas"}, {id:"b1_4_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_4_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_4_5", val:"Observasi interaksi pendidik–peserta didik"}, {id:"b1_4_6", val:"Jurnal/Catatan refleksi peserta didik"}, {id:"b1_4_7", val:"Hasil asesmen KSE"}], wawancara: "Pendidik secara terprogram dan sangat konsisten mengintegrasikan 5 KSE (Kesadaran Diri, Manajemen Diri, dll) dalam KBM. Pendidik dapat menjelaskan strategi spesifik (misal: teknik STOP, role playing, diskusi kelompok empatik) dan dampaknya bagi peserta didik.", observasi: "Terobservasi praktik pembelajaran KSE secara eksplisit (misal: diskusi manajemen konflik, refleksi emosi). Pendidik menjadi model (teladan) utama dalam penerapan KSE. Peserta didik terlihat mampu mengelola emosi dan berkolaborasi dengan sangat baik." },
-          "2-1": { bukti: [{id:"b2_1_1", val:"Tata tertib/Kesepakatan kelas yang dipajang"}, {id:"b2_1_2", val:"Jadwal piket"}, {id:"b2_1_3", val:"Daftar hadir"}, {id:"b2_1_4", val:"Dokumentasi (foto/video) proses penyusunan"}, {id:"b2_1_5", val:"Wawancara dengan pendidik dan warga belajar"}], wawancara: "Pendidik memfasilitasi penuh penyusunan kesepakatan kelas. Peserta didik mengonfirmasi bahwa mereka yang mengusulkan, mendiskusikan, dan menyetujui poin-poin kesepakatan. Kesepakatan ini menjadi rujukan konsisten untuk mengelola perilaku dan dihargai oleh semua.", observasi: "Kesepakatan kelas terpajang jelas dan kreatif. Terobservasi pendidik dan peserta didik saling mengingatkan (tidak hanya pendidik ke peserta didik) menggunakan kesepakatan tersebut. Suasana kelas sangat tertib dan produktif atas dasar kesadaran bersama." },
-          "2-2": { bukti: [{id:"b2_2_1", val:"Poster/Media KIE disiplin positif"}, {id:"b2_2_2", val:"Dokumentasi kegiatan observasi"}, {id:"b2_2_3", val:"Wawancara dengan pendidik dan warga belajar"}, {id:"b2_2_4", val:"Catatan kasus dan penanganannya (Restitusi)"}], wawancara: "Pendidik memiliki pemahaman mendalam tentang disiplin positif dan teknik restitusi. Penegakan fokus pada perbaikan perilaku dan tanggung jawab, bukan hukuman. Peserta didik merasa diperlakukan adil, dihargai, dan memahami konsekuensi logis dari tindakan mereka.", observasi: "Tidak ada observasi hukuman fisik atau verbal. Pendidik menggunakan teknik restitusi (menanyakan keyakinan kelas, mencari solusi bersama). Komunikasi sangat asertif, tenang, dan penuh empati. Peserta didik merespons teguran dengan positif dan menunjukkan perbaikan." },
-          "2-3": { bukti: [{id:"b2_3_1", val:"Jadwal pembelajaran"}, {id:"b2_3_2", val:"Tata tertib kelas"}, {id:"b2_3_3", val:"RPP (dengan manajemen waktu & diferensiasi)"}, {id:"b2_3_4", val:"Dokumen kurikulum"}, {id:"b2_3_5", val:"Video rekaman pembelajaran"}], wawancara: "Pendidik mahir menggunakan beragam metode interaktif (game, diskusi, proyek) dan media (digital/non-digital) sehingga pembelajaran sangat menarik. Pendidik terampil mengelola transisi antar kegiatan dengan mulus. Peserta didik menyatakan pembelajaran tidak membosankan.", observasi: "Seluruh peserta didik (100%) terlibat aktif ('fully engaged') dalam KBM. Waktu pembelajaran dimanfaatkan sangat efektif, nyaris tanpa 'dead time'. Pendidik mengelola kelas dengan 'voice and presence' yang kuat, positif, dan penuh antusiasme." },
-          "3-1": { bukti: [{id:"b3_1_1", val:"RPP atau Modul Ajar (lengkap, diferensiatif)"}, {id:"b3_1_2", val:"Dokumen perencanaan (Prota, Promes, ATP, Silabus)"}, {id:"b3_1_3", val:"Analisis konteks/karakteristik peserta didik"}], wawancara: "Perencanaan (RPP/Modul Ajar) sangat rinci, adaptif (mencakup diferensiasi konten, proses, produk), dan selaras dengan kebutuhan individual peserta didik. Pendidik menyusunnya berdasarkan refleksi KBM sebelumnya dan data asesmen diagnostik.", observasi: "Pembelajaran berjalan sangat terstruktur sesuai RPP. Pendidik menguasai materi dan langkah KBM. Terlihat jelas implementasi strategi diferensiasi untuk melayani keragaman peserta didik. Pendidik siap dengan rencana alternatif (Plan B) jika diperlukan." },
-          "3-2": { bukti: [{id:"b3_2_1", val:"Lembar penilaian formatif (kuis, LKPD)"}, {id:"b3_2_2", val:"Catatan umpan balik pendidik (tertulis/lisan)"}, {id:"b3_2_3", val:"Observasi interaksi (umpan balik seketika)"}, {id:"b3_2_4", val:"Jurnal refleksi pendidik (pasca asesmen)"}], wawancara: "Pendidik melakukan asesmen formatif secara konsisten di sepanjang proses KBM (bukan hanya di akhir). Umpan balik yang diberikan sangat spesifik, konstruktif, dan 'actionable' (dapat ditindaklanjuti). Peserta didik paham cara memperbaiki kesalahannya.", observasi: "Terobservasi pendidik menggunakan berbagai teknik formatif (tanya jawab, kuis singkat, 'exit ticket', 'thumbs up/down'). Umpan balik diberikan seketika. Pendidik secara fleksibel menyesuaikan KBM saat itu juga berdasarkan hasil formatif yang didapat." },
-          "3-3": { bukti: [{id:"b3_3_1", val:"Soal ulangan, proyek, atau tugas akhir"}, {id:"b3_3_2", val:"Instrumen/Rubrik penilaian (proyek, portofolio)"}, {id:"b3_3_3", val:"Dokumentasi pelaksanaan penilaian"}, {id:"b3_3_4", val:"Analisis hasil asesmen sumatif"}], wawancara: "Pendidik menerapkan asesmen sumatif yang sangat beragam (tes, proyek, portofolio, unjuk kerja) sesuai capaian pembelajaran. Instrumen (termasuk rubrik) sangat valid, reliabel, dan dikomunikasikan transparan kepada peserta didik sebelum asesmen.", observasi: "Pelaksanaan asesmen (misal: presentasi proyek, ujian praktik) berjalan sangat tertib, objektif, dan profesional. Rubrik penilaian digunakan secara konsisten oleh pendidik. Hasil analisis asesmen sumatif sangat rinci dan akurat." },
-          "3-4": { bukti: [{id:"b3_4_1", val:"Laporan penilaian (Rapor) dgn narasi deskriptif"}, {id:"b3_4_2", val:"Catatan/Program remedial & pengayaan"}, {id:"b3_4_3", val:"Dokumentasi pembahasan (rapat/konsultasi ortu)"}], wawancara: "Laporan hasil belajar (rapor) sangat komprehensif, memuat narasi deskriptif yang kuat tentang kemajuan, bukan hanya angka. Pendidik menjelaskan progres dan area perbaikan. Ada program tindak lanjut (remedial/pengayaan) yang terstruktur dan terbukti dilaksanakan.", observasi: "Terobservasi dokumen tindak lanjut (remedial/pengayaan) yang diimplementasikan secara konsisten. Data hasil asesmen (formatif/sumatif) terbukti digunakan sebagai dasar untuk memetakan dan merancang KBM berikutnya (siklus berkelanjutan)." },
-          "3-5": { bukti: [{id:"b3_5_1", val:"Catatan diskusi kelas (menunjukkan HOTS)"}, {id:"b3_5_2", val:"Dokumentasi presentasi hasil diskusi/proyek"}, {id:"b3_5_3", val:"Observasi partisipasi (aktivitas analisis)"}, {id:"b3_5_4", val:"LKPD berbasis HOTS/PBL/PJBL"}], wawancara: "Pendidik secara konsisten menggunakan pertanyaan pemantik level tinggi (analisis, evaluasi, kreasi). Peserta didik didorong dan difasilitasi penuh untuk mengaitkan materi dengan konteks dunia nyata, isu global, atau pengalaman pribadi mereka secara mendalam.", observasi: "Terobservasi diskusi kelas yang sangat hidup, kritis, dan mendalam. Peserta didik mampu berdebat, mempertahankan argumen dengan data, dan mensintesis gagasan. Pendidik berperan murni sebagai fasilitator yang memandu alur berpikir kritis peserta didik." },
-          "4-1": { bukti: [{id:"b4_1_1", val:"Observasi kegiatan keagamaan (doa, ibadah)"}, {id:"b4_1_2", val:"Dokumentasi kegiatan (PHBI, pengajian, doa)"}, {id:"b4_1_3", val:"Catatan/Jurnal Sikap Spiritual Pendidik"}, {id:"b4_1_4", val:"Integrasi nilai agama dalam RPP/Modul Ajar"}], wawancara: "Pendidik tidak hanya memulai/menutup KBM dengan doa, tetapi secara konsisten mengintegrasikan nilai-nilai keimanan dan akhlak mulia dalam semua mata pelajaran. Pendidik menjadi teladan (role model) utama dalam bersikap dan bertutur kata.", observasi: "Nilai keimanan dan akhlak mulia (jujur, santun, hormat) telah menjadi pembudayaan. Terobservasi peserta didik menunjukkan kesadaran tinggi dalam beribadah dan bersikap, tidak hanya karena aturan, tetapi atas kesadaran internal. Iklim religius sangat terasa." },
-          "4-2": { bukti: [{id:"b4_2_1", val:"Dokumentasi kunjungan (virtual/fisik) ke museum/situs"}, {id:"b4_2_2", val:"Catatan/RPP pelajaran (IPS, Sejarah, SBdP)"}, {id:"b4_2_3", val:"Foto/Video kegiatan (misal: Hari Pahlawan, Batik)"}, {id:"b4_2_4", val:"Portofolio proyek peserta didik tema kebangsaan/budaya"}], wawancara: "Pendidik secara kreatif mengemas KBM (misal: IPS, Sejarah) menjadi sangat relevan dan inspiratif. Pembelajaran tidak hanya seremonial, tetapi implementatif (misal: proyek apresiasi budaya lokal, diskusi pemikiran pahlawan) dan terintegrasi P5.", observasi: "Peserta didik menunjukkan antusiasme sangat tinggi saat KBM sejarah/budaya. Terobservasi mereka mampu mengapresiasi dan menjelaskan nilai-nilai luhur budaya/sejarah bangsa. Tumbuh rasa bangga dan cinta tanah air yang otentik." },
-          "4-3": { bukti: [{id:"b4_3_1", val:"Lembar soal/tugas berbasis HOTS/studi kasus"}, {id:"b4_3_2", val:"Observasi diskusi kelas (problem solving)"}, {id:"b4_3_3", val:"Catatan guru (aktivitas berpikir kritis)"}, {id:"b4_3_4", val:"RPP/Modul Ajar (PBL/PjBL)"}], wawancara: "Pendidik terampil merancang KBM berbasis riset, inkuiri, atau 'Problem/Project Based Learning' (PBL/PjBL). Peserta didik secara konsisten dilatih untuk menganalisis masalah kompleks, mengidentifikasi akar masalah, dan merumuskan solusi kreatif.", observasi: "Peserta didik sangat aktif bertanya 'mengapa' dan 'bagaimana'. Mereka mampu menganalisis permasalahan secara sistematis, bekerja kolaboratif untuk memecahkan masalah, dan mempertahankan argumennya dengan logis. Keterampilan nalar kritis sangat terasah." },
-          "4-4": { bukti: [{id:"b4_4_1", val:"RPP/Modul Ajar (muatan lokal/kekhasan)"}, {id:"b4_4_2", val:"Observasi perilaku (karakter khas)"}, {id:"b4_4_3", val:"Dokumentasi kegiatan/hasil karya (kewirausahaan, dll)"}, {id:"b4_4_4", val:"Kurikulum muatan lokal/kekhasan"}], wawancara: "Program kekhasan (misal: kewirausahaan, vokasi, digital skill) terintegrasi penuh dalam kurikulum dan menjadi 'branding' lembaga. Pendidik sangat kompeten di bidang tersebut. Lulusan terbukti memiliki kompetensi/karakter khas yang unggul.", observasi: "Terobservasi kompetensi/karakter khas (misal: kemandirian, kreativitas wirausaha, disiplin) sangat menonjol pada seluruh peserta didik. Program kekhasan berjalan sangat efektif, menghasilkan karya/produk nyata, dan menjadi budaya lembaga." },
-          "15-1": { bukti: [{id:"b15_1_1", val:"Observasi presentasi/diskusi peserta didik"}, {id:"b15_1_2", val:"Catatan hasil diskusi kelompok"}, {id:"b15_1_3", val:"Dokumentasi video/audio penyampaian gagasan"}, {id:"b15_1_4", val:"Rubrik penilaian presentasi/diskusi"}], wawancara: "Peserta didik sangat terampil mengemukakan pendapat dan ide secara sistematis, kritis, dan logis. Mereka dilatih secara konsisten untuk berbicara di depan umum (presentasi, diskusi) dengan bahasa yang santun, lugas, dan percaya diri.", observasi: "Terobservasi peserta didik sangat aktif dan mahir menyampaikan gagasan saat diskusi/presentasi. Mereka mampu menjelaskan ide kompleks dengan struktur jelas, menggunakan data pendukung, dan merespons pertanyaan/sanggahan dengan baik." },
-          "15-2": { bukti: [{id:"b15_2_1", val:"Dokumentasi produk/karya inovatif siswa"}, {id:"b15_2_2", val:"Foto/Video pameran/penjualan karya"}, {id:"b15_2_3", val:"Catatan kegiatan kewirausahaan/proyek kreatif (PjBL)"}, {id:"b15_2_4", val:"Sertifikat/Piagam lomba karya/inovasi"}], wawancara: "Peserta didik menunjukkan kreativitas dan inovasi yang tinggi, menghasilkan beragam karya (kerajinan, produk vokasi, desain, konten digital) yang orisinal dan memiliki nilai guna/jual. Lembaga sangat memfasilitasi (sarana, pameran, jejaring).", observasi: "Terobservasi beragam produk inovatif hasil karya peserta didik (misal: desain kaos, produk kuliner, aplikasi sederhana). Karya-karya tersebut dipamerkan secara profesional dan sebagian telah laku dijual atau memenangkan kompetisi. Keterampilan vokasi sangat kuat." },
-          "15-3": { bukti: [{id:"b15_3_1", val:"Observasi partisipasi (kegiatan masyarakat/magang)"}, {id:"b15_3_2", val:"Dokumen tugas mandiri (portofolio, proyek)"}, {id:"b15_3_3", val:"Catatan/Testimoni keterlibatan alumni/warga belajar"}, {id:"b15_3_4", val:"Tracer study lulusan (jika ada)"}], wawancara: "Peserta didik/lulusan terbukti sangat mandiri, bertanggung jawab, dan memiliki inisiatif tinggi. Mereka tidak hanya fokus pada akademik, tetapi terlibat aktif dalam kegiatan sosial masyarakat (gotong royong, karang taruna) atau dunia kerja (magang/wirausaha).", observasi: "Peserta didik mampu bekerja mandiri dalam tugas-tugas kompleks tanpa supervisi ketat. Mereka menunjukkan inisiatif tinggi, rasa tanggung jawab sosial, dan keterampilan adaptasi yang sangat baik di lingkungan belajar maupun di luar (masyarakat/magang)." }
-        };
+    // --- DATA INSTRUMEN (TEMPLATE) ---
+    // (Data instrumentData tetap sama seperti sebelumnya)
+    const instrumentData = {
+      "1-1": { bukti: [{id:"b1_1_1", val:"RPP dan Kurikulum"}, {id:"b1_1_2", val:"Observasi Kelas"}, {id:"b1_1_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_1_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_1_5", val:"Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas"}, {id:"b1_1_6", val:"Catatan anekdotal/Jurnal Pendidik"}, {id:"b1_1_7", val:"Hasil survei kepuasan peserta didik"}], wawancara: "Pendidik menunjukkan pemahaman mendalam tentang latar belakang unik setiap peserta didik dan secara konsisten proaktif menciptakan iklim inklusif. Peserta didik (termasuk yang minoritas/pendiam) mengonfirmasi merasa sangat dihargai, didengar, dan nyaman berekspresi tanpa takut dihakimi.", observasi: "Terobservasi interaksi yang sangat cair, hangat, dan dua arah di dalam maupun di luar kelas. Pendidik mahir menggunakan bahasa positif, memvalidasi perasaan peserta didik, dan memberikan kesempatan setara. Tercipta 'psychological safety' yang tinggi di lingkungan belajar." },
+      "1-2": { bukti: [{id:"b1_2_1", val:"RPP dan Kurikulum"}, {id:"b1_2_2", val:"Observasi Kelas"}, {id:"b1_2_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_2_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_2_5", val:"Observasi interaksi pendidik–peserta didik"}, {id:"b1_2_6", val:"Contoh umpan balik tertulis (feedback)"}, {id:"b1_2_7", val:"Portofolio progres peserta didik"}], wawancara: "Pendidik secara sistematis merancang KBM yang menantang namun aman. Pendidik terampil memberi umpan balik konstruktif yang fokus pada proses dan usaha. Peserta didik menyatakan termotivasi oleh kegagalan, memandangnya sebagai bagian dari proses belajar, dan berani mencoba lagi.", observasi: "Pendidik secara konsisten memberikan 'growth mindset praise' (apresiasi pada proses, strategi, dan kegigihan, bukan hanya hasil akhir/kecerdasan). Peserta didik terlihat antusias mencoba tantangan baru, tidak takut salah, dan saling mendukung proses belajar temannya." },
+      "1-3": { bukti: [{id:"b1_3_1", val:"RPP dan Kurikulum (misal: diferensiasi)"}, {id:"b1_3_2", val:"Observasi Kelas"}, {id:"b1_3_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_3_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_3_5", val:"Observasi interaksi pendidik–peserta didik"}, {id:"b1_3_6", val:"Catatan/Program bimbingan khusus"}, {id:"b1_3_7", val:"Portofolio kemajuan peserta didik"}], wawancara: "Pendidik memiliki data/peta kebutuhan peserta didik yang rinci dan proaktif menawarkan bantuan sebelum diminta. Peserta didik (yang membutuhkan dukungan) merasa sangat dipahami, didukung, dan tidak merasa terstigma. Ada program bimbingan individual yang terstruktur.", observasi: "Terobservasi pendidik melakukan pendampingan individual secara intensif namun tetap inklusif (tidak mengganggu KBM). Ada 'peer tutoring' (tutor sebaya) yang terstruktur dan difasilitasi pendidik. Peserta didik lain menunjukkan empati dan proaktif membantu temannya." },
+      "1-4": { bukti: [{id:"b1_4_1", val:"RPP/Modul Ajar yang eksplisit mencantumkan KSE"}, {id:"b1_4_2", val:"Observasi Kelas"}, {id:"b1_4_3", val:"Wawancara dengan perwakilan pendidik"}, {id:"b1_4_4", val:"Wawancara dengan minimal 5 peserta didik"}, {id:"b1_4_5", val:"Observasi interaksi pendidik–peserta didik"}, {id:"b1_4_6", val:"Jurnal/Catatan refleksi peserta didik"}, {id:"b1_4_7", val:"Hasil asesmen KSE"}], wawancara: "Pendidik secara terprogram dan sangat konsisten mengintegrasikan 5 KSE (Kesadaran Diri, Manajemen Diri, dll) dalam KBM. Pendidik dapat menjelaskan strategi spesifik (misal: teknik STOP, role playing, diskusi kelompok empatik) dan dampaknya bagi peserta didik.", observasi: "Terobservasi praktik pembelajaran KSE secara eksplisit (misal: diskusi manajemen konflik, refleksi emosi). Pendidik menjadi model (teladan) utama dalam penerapan KSE. Peserta didik terlihat mampu mengelola emosi dan berkolaborasi dengan sangat baik." },
+      "2-1": { bukti: [{id:"b2_1_1", val:"Tata tertib/Kesepakatan kelas yang dipajang"}, {id:"b2_1_2", val:"Jadwal piket"}, {id:"b2_1_3", val:"Daftar hadir"}, {id:"b2_1_4", val:"Dokumentasi (foto/video) proses penyusunan"}, {id:"b2_1_5", val:"Wawancara dengan pendidik dan warga belajar"}], wawancara: "Pendidik memfasilitasi penuh penyusunan kesepakatan kelas. Peserta didik mengonfirmasi bahwa mereka yang mengusulkan, mendiskusikan, dan menyetujui poin-poin kesepakatan. Kesepakatan ini menjadi rujukan konsisten untuk mengelola perilaku dan dihargai oleh semua.", observasi: "Kesepakatan kelas terpajang jelas dan kreatif. Terobservasi pendidik dan peserta didik saling mengingatkan (tidak hanya pendidik ke peserta didik) menggunakan kesepakatan tersebut. Suasana kelas sangat tertib dan produktif atas dasar kesadaran bersama." },
+      "2-2": { bukti: [{id:"b2_2_1", val:"Poster/Media KIE disiplin positif"}, {id:"b2_2_2", val:"Dokumentasi kegiatan observasi"}, {id:"b2_2_3", val:"Wawancara dengan pendidik dan warga belajar"}, {id:"b2_2_4", val:"Catatan kasus dan penanganannya (Restitusi)"}], wawancara: "Pendidik memiliki pemahaman mendalam tentang disiplin positif dan teknik restitusi. Penegakan fokus pada perbaikan perilaku dan tanggung jawab, bukan hukuman. Peserta didik merasa diperlakukan adil, dihargai, dan memahami konsekuensi logis dari tindakan mereka.", observasi: "Tidak ada observasi hukuman fisik atau verbal. Pendidik menggunakan teknik restitusi (menanyakan keyakinan kelas, mencari solusi bersama). Komunikasi sangat asertif, tenang, dan penuh empati. Peserta didik merespons teguran dengan positif dan menunjukkan perbaikan." },
+      "2-3": { bukti: [{id:"b2_3_1", val:"Jadwal pembelajaran"}, {id:"b2_3_2", val:"Tata tertib kelas"}, {id:"b2_3_3", val:"RPP (dengan manajemen waktu & diferensiasi)"}, {id:"b2_3_4", val:"Dokumen kurikulum"}, {id:"b2_3_5", val:"Video rekaman pembelajaran"}], wawancara: "Pendidik mahir menggunakan beragam metode interaktif (game, diskusi, proyek) dan media (digital/non-digital) sehingga pembelajaran sangat menarik. Pendidik terampil mengelola transisi antar kegiatan dengan mulus. Peserta didik menyatakan pembelajaran tidak membosankan.", observasi: "Seluruh peserta didik (100%) terlibat aktif ('fully engaged') dalam KBM. Waktu pembelajaran dimanfaatkan sangat efektif, nyaris tanpa 'dead time'. Pendidik mengelola kelas dengan 'voice and presence' yang kuat, positif, dan penuh antusiasme." },
+      "3-1": { bukti: [{id:"b3_1_1", val:"RPP atau Modul Ajar (lengkap, diferensiatif)"}, {id:"b3_1_2", val:"Dokumen perencanaan (Prota, Promes, ATP, Silabus)"}, {id:"b3_1_3", val:"Analisis konteks/karakteristik peserta didik"}], wawancara: "Perencanaan (RPP/Modul Ajar) sangat rinci, adaptif (mencakup diferensiasi konten, proses, produk), dan selaras dengan kebutuhan individual peserta didik. Pendidik menyusunnya berdasarkan refleksi KBM sebelumnya dan data asesmen diagnostik.", observasi: "Pembelajaran berjalan sangat terstruktur sesuai RPP. Pendidik menguasai materi dan langkah KBM. Terlihat jelas implementasi strategi diferensiasi untuk melayani keragaman peserta didik. Pendidik siap dengan rencana alternatif (Plan B) jika diperlukan." },
+      "3-2": { bukti: [{id:"b3_2_1", val:"Lembar penilaian formatif (kuis, LKPD)"}, {id:"b3_2_2", val:"Catatan umpan balik pendidik (tertulis/lisan)"}, {id:"b3_2_3", val:"Observasi interaksi (umpan balik seketika)"}, {id:"b3_2_4", val:"Jurnal refleksi pendidik (pasca asesmen)"}], wawancara: "Pendidik melakukan asesmen formatif secara konsisten di sepanjang proses KBM (bukan hanya di akhir). Umpan balik yang diberikan sangat spesifik, konstruktif, dan 'actionable' (dapat ditindaklanjuti). Peserta didik paham cara memperbaiki kesalahannya.", observasi: "Terobservasi pendidik menggunakan berbagai teknik formatif (tanya jawab, kuis singkat, 'exit ticket', 'thumbs up/down'). Umpan balik diberikan seketika. Pendidik secara fleksibel menyesuaikan KBM saat itu juga berdasarkan hasil formatif yang didapat." },
+      "3-3": { bukti: [{id:"b3_3_1", val:"Soal ulangan, proyek, atau tugas akhir"}, {id:"b3_3_2", val:"Instrumen/Rubrik penilaian (proyek, portofolio)"}, {id:"b3_3_3", val:"Dokumentasi pelaksanaan penilaian"}, {id:"b3_3_4", val:"Analisis hasil asesmen sumatif"}], wawancara: "Pendidik menerapkan asesmen sumatif yang sangat beragam (tes, proyek, portofolio, unjuk kerja) sesuai capaian pembelajaran. Instrumen (termasuk rubrik) sangat valid, reliabel, dan dikomunikasikan transparan kepada peserta didik sebelum asesmen.", observasi: "Pelaksanaan asesmen (misal: presentasi proyek, ujian praktik) berjalan sangat tertib, objektif, dan profesional. Rubrik penilaian digunakan secara konsisten oleh pendidik. Hasil analisis asesmen sumatif sangat rinci dan akurat." },
+      "3-4": { bukti: [{id:"b3_4_1", val:"Laporan penilaian (Rapor) dgn narasi deskriptif"}, {id:"b3_4_2", val:"Catatan/Program remedial & pengayaan"}, {id:"b3_4_3", val:"Dokumentasi pembahasan (rapat/konsultasi ortu)"}], wawancara: "Laporan hasil belajar (rapor) sangat komprehensif, memuat narasi deskriptif yang kuat tentang kemajuan, bukan hanya angka. Pendidik menjelaskan progres dan area perbaikan. Ada program tindak lanjut (remedial/pengayaan) yang terstruktur dan terbukti dilaksanakan.", observasi: "Terobservasi dokumen tindak lanjut (remedial/pengayaan) yang diimplementasikan secara konsisten. Data hasil asesmen (formatif/sumatif) terbukti digunakan sebagai dasar untuk memetakan dan merancang KBM berikutnya (siklus berkelanjutan)." },
+      "3-5": { bukti: [{id:"b3_5_1", val:"Catatan diskusi kelas (menunjukkan HOTS)"}, {id:"b3_5_2", val:"Dokumentasi presentasi hasil diskusi/proyek"}, {id:"b3_5_3", val:"Observasi partisipasi (aktivitas analisis)"}, {id:"b3_5_4", val:"LKPD berbasis HOTS/PBL/PJBL"}], wawancara: "Pendidik secara konsisten menggunakan pertanyaan pemantik level tinggi (analisis, evaluasi, kreasi). Peserta didik didorong dan difasilitasi penuh untuk mengaitkan materi dengan konteks dunia nyata, isu global, atau pengalaman pribadi mereka secara mendalam.", observasi: "Terobservasi diskusi kelas yang sangat hidup, kritis, dan mendalam. Peserta didik mampu berdebat, mempertahankan argumen dengan data, dan mensintesis gagasan. Pendidik berperan murni sebagai fasilitator yang memandu alur berpikir kritis peserta didik." },
+      "4-1": { bukti: [{id:"b4_1_1", val:"Observasi kegiatan keagamaan (doa, ibadah)"}, {id:"b4_1_2", val:"Dokumentasi kegiatan (PHBI, pengajian, doa)"}, {id:"b4_1_3", val:"Catatan/Jurnal Sikap Spiritual Pendidik"}, {id:"b4_1_4", val:"Integrasi nilai agama dalam RPP/Modul Ajar"}], wawancara: "Pendidik tidak hanya memulai/menutup KBM dengan doa, tetapi secara konsisten mengintegrasikan nilai-nilai keimanan dan akhlak mulia dalam semua mata pelajaran. Pendidik menjadi teladan (role model) utama dalam bersikap dan bertutur kata.", observasi: "Nilai keimanan dan akhlak mulia (jujur, santun, hormat) telah menjadi pembudayaan. Terobservasi peserta didik menunjukkan kesadaran tinggi dalam beribadah dan bersikap, tidak hanya karena aturan, tetapi atas kesadaran internal. Iklim religius sangat terasa." },
+      "4-2": { bukti: [{id:"b4_2_1", val:"Dokumentasi kunjungan (virtual/fisik) ke museum/situs"}, {id:"b4_2_2", val:"Catatan/RPP pelajaran (IPS, Sejarah, SBdP)"}, {id:"b4_2_3", val:"Foto/Video kegiatan (misal: Hari Pahlawan, Batik)"}, {id:"b4_2_4", val:"Portofolio proyek peserta didik tema kebangsaan/budaya"}], wawancara: "Pendidik secara kreatif mengemas KBM (misal: IPS, Sejarah) menjadi sangat relevan dan inspiratif. Pembelajaran tidak hanya seremonial, tetapi implementatif (misal: proyek apresiasi budaya lokal, diskusi pemikiran pahlawan) dan terintegrasi P5.", observasi: "Peserta didik menunjukkan antusiasme sangat tinggi saat KBM sejarah/budaya. Terobservasi mereka mampu mengapresiasi dan menjelaskan nilai-nilai luhur budaya/sejarah bangsa. Tumbuh rasa bangga dan cinta tanah air yang otentik." },
+      "4-3": { bukti: [{id:"b4_3_1", val:"Lembar soal/tugas berbasis HOTS/studi kasus"}, {id:"b4_3_2", val:"Observasi diskusi kelas (problem solving)"}, {id:"b4_3_3", val:"Catatan guru (aktivitas berpikir kritis)"}, {id:"b4_3_4", val:"RPP/Modul Ajar (PBL/PjBL)"}], wawancara: "Pendidik terampil merancang KBM berbasis riset, inkuiri, atau 'Problem/Project Based Learning' (PBL/PjBL). Peserta didik secara konsisten dilatih untuk menganalisis masalah kompleks, mengidentifikasi akar masalah, dan merumuskan solusi kreatif.", observasi: "Peserta didik sangat aktif bertanya 'mengapa' dan 'bagaimana'. Mereka mampu menganalisis permasalahan secara sistematis, bekerja kolaboratif untuk memecahkan masalah, dan mempertahankan argumennya dengan logis. Keterampilan nalar kritis sangat terasah." },
+      "4-4": { bukti: [{id:"b4_4_1", val:"RPP/Modul Ajar (muatan lokal/kekhasan)"}, {id:"b4_4_2", val:"Observasi perilaku (karakter khas)"}, {id:"b4_4_3", val:"Dokumentasi kegiatan/hasil karya (kewirausahaan, dll)"}, {id:"b4_4_4", val:"Kurikulum muatan lokal/kekhasan"}], wawancara: "Program kekhasan (misal: kewirausahaan, vokasi, digital skill) terintegrasi penuh dalam kurikulum dan menjadi 'branding' lembaga. Pendidik sangat kompeten di bidang tersebut. Lulusan terbukti memiliki kompetensi/karakter khas yang unggul.", observasi: "Terobservasi kompetensi/karakter khas (misal: kemandirian, kreativitas wirausaha, disiplin) sangat menonjol pada seluruh peserta didik. Program kekhasan berjalan sangat efektif, menghasilkan karya/produk nyata, dan menjadi budaya lembaga." },
+      "15-1": { bukti: [{id:"b15_1_1", val:"Observasi presentasi/diskusi peserta didik"}, {id:"b15_1_2", val:"Catatan hasil diskusi kelompok"}, {id:"b15_1_3", val:"Dokumentasi video/audio penyampaian gagasan"}, {id:"b15_1_4", val:"Rubrik penilaian presentasi/diskusi"}], wawancara: "Peserta didik sangat terampil mengemukakan pendapat dan ide secara sistematis, kritis, dan logis. Mereka dilatih secara konsisten untuk berbicara di depan umum (presentasi, diskusi) dengan bahasa yang santun, lugas, dan percaya diri.", observasi: "Terobservasi peserta didik sangat aktif dan mahir menyampaikan gagasan saat diskusi/presentasi. Mereka mampu menjelaskan ide kompleks dengan struktur jelas, menggunakan data pendukung, dan merespons pertanyaan/sanggahan dengan baik." },
+      "15-2": { bukti: [{id:"b15_2_1", val:"Dokumentasi produk/karya inovatif siswa"}, {id:"b15_2_2", val:"Foto/Video pameran/penjualan karya"}, {id:"b15_2_3", val:"Catatan kegiatan kewirausahaan/proyek kreatif (PjBL)"}, {id:"b15_2_4", val:"Sertifikat/Piagam lomba karya/inovasi"}], wawancara: "Peserta didik menunjukkan kreativitas dan inovasi yang tinggi, menghasilkan beragam karya (kerajinan, produk vokasi, desain, konten digital) yang orisinal dan memiliki nilai guna/jual. Lembaga sangat memfasilitasi (sarana, pameran, jejaring).", observasi: "Terobservasi beragam produk inovatif hasil karya peserta didik (misal: desain kaos, produk kuliner, aplikasi sederhana). Karya-karya tersebut dipamerkan secara profesional dan sebagian telah laku dijual atau memenangkan kompetisi. Keterampilan vokasi sangat kuat." },
+      "15-3": { bukti: [{id:"b15_3_1", val:"Observasi partisipasi (kegiatan masyarakat/magang)"}, {id:"b15_3_2", val:"Dokumen tugas mandiri (portofolio, proyek)"}, {id:"b15_3_3", val:"Catatan/Testimoni keterlibatan alumni/warga belajar"}, {id:"b15_3_4", val:"Tracer study lulusan (jika ada)"}], wawancara: "Peserta didik/lulusan terbukti sangat mandiri, bertanggung jawab, dan memiliki inisiatif tinggi. Mereka tidak hanya fokus pada akademik, tetapi terlibat aktif dalam kegiatan sosial masyarakat (gotong royong, karang taruna) atau dunia kerja (magang/wirausaha).", observasi: "Peserta didik mampu bekerja mandiri dalam tugas-tugas kompleks tanpa supervisi ketat. Mereka menunjukkan inisiatif tinggi, rasa tanggung jawab sosial, dan keterampilan adaptasi yang sangat baik di lingkungan belajar maupun di luar (masyarakat/magang)." }
+    };
 
-        // --- FUNGSI GENERATE INPUT PER PROGRAM ---
-        function generateProgramInputs(butir, indikatorIdx) {
-            const data = instrumentData[`${butir}-${indikatorIdx}`];
-            if (!data) return ''; // Fallback jika data tidak ditemukan
 
-            let html = '';
-            const programs = ['A', 'B', 'C'];
+    // --- FUNGSI GENERATE INPUT PER PROGRAM ---
+    function generateProgramInputs(butir, indikatorIdx) {
+        const data = instrumentData[`${butir}-${indikatorIdx}`];
+        if (!data) return; // Fallback
 
-            programs.forEach(prog => {
-                const progLower = prog.toLowerCase();
-                const uniquePrefix = `b${butir}_${indikatorIdx}_${progLower}_`;
+        const programs = ['A', 'B', 'C'];
+        let buktiHtml = '';
+        let levelHtml = '';
+        let wawancaraHtml = '';
+        let observasiHtml = '';
 
-                html += `<div class="program-input paket-${progLower}" data-program="${prog}">`;
-                html += `<h4>Paket ${prog}</h4>`;
+        programs.forEach(prog => {
+            const progLower = prog.toLowerCase();
+            const uniquePrefix = `b${butir}_${indikatorIdx}_${progLower}_`;
 
-                // Bukti/Dokumentasi Checkboxes
-                let buktiHtml = '<div>';
-                data.bukti.forEach((item, index) => {
-                    const cbId = `${uniquePrefix}bukti_${index + 1}`;
-                    buktiHtml += `<div class="checkbox-item"><input type="checkbox" id="${cbId}" value="${item.val}" checked><label for="${cbId}">${item.val}</label></div>`;
-                });
-                buktiHtml += '</div>';
+            // Wrapper Div per Program
+            const programWrapperStart = `<div class="program-input paket-${progLower}" data-program="${prog}" style="display: none;"><h4>Paket ${prog}</h4>`;
+            const programWrapperEnd = `</div>`;
 
-                // Level Kinerja Dropdown
-                let levelHtml = `<div><select class="level-kinerja" id="${uniquePrefix}level">
-                    <option value="4" selected>Sangat Baik</option>
-                    <option value="3">Baik</option>
-                    <option value="2">Cukup</option>
-                    <option value="1">Kurang</option>
-                </select></div>`;
-
-                // Wawancara Textarea
-                let wawancaraHtml = `<div><textarea class="editable" id="${uniquePrefix}wawancara">${data.wawancara}</textarea></div>`;
-
-                // Observasi Textarea
-                let observasiHtml = `<div><textarea class="editable" id="${uniquePrefix}observasi">${data.observasi}</textarea></div>`;
-
-                // Masukkan ke container yang benar
-                document.getElementById(`bukti-${butir}-${indikatorIdx}`).innerHTML += `<div class="program-input paket-${progLower}" data-program="${prog}"><h4>Paket ${prog}</h4>${buktiHtml}</div>`;
-                document.getElementById(`level-${butir}-${indikatorIdx}`).innerHTML += `<div class="program-input paket-${progLower}" data-program="${prog}">${levelHtml}</div>`;
-                document.getElementById(`wawancara-${butir}-${indikatorIdx}`).innerHTML += `<div class="program-input paket-${progLower}" data-program="${prog}">${wawancaraHtml}</div>`;
-                document.getElementById(`observasi-${butir}-${indikatorIdx}`).innerHTML += `<div class="program-input paket-${progLower}" data-program="${prog}">${observasiHtml}</div>`;
+            // Bukti Checkboxes
+            let currentBuktiHtml = '<div>';
+            data.bukti.forEach((item, index) => {
+                const cbId = `${uniquePrefix}bukti_${index + 1}`;
+                currentBuktiHtml += `<div class="checkbox-item"><input type="checkbox" id="${cbId}" value="${item.val}" checked><label for="${cbId}">${item.val}</label></div>`;
             });
-        }
+            currentBuktiHtml += '</div>';
+            buktiHtml += programWrapperStart + currentBuktiHtml + programWrapperEnd;
 
-        // --- FUNGSI TOGGLE VISIBILITY ---
-        function toggleProgramVisibility() {
+            // Level Kinerja Dropdown
+            let currentLevelHtml = `<div><select class="level-kinerja" id="${uniquePrefix}level">
+                <option value="4" selected>Sangat Baik</option>
+                <option value="3">Baik</option>
+                <option value="2">Cukup</option>
+                <option value="1">Kurang</option>
+            </select></div>`;
+            levelHtml += programWrapperStart + currentLevelHtml + programWrapperEnd;
+
+            // Wawancara Textarea
+            let currentWawancaraHtml = `<div><textarea class="editable" id="${uniquePrefix}wawancara">${data.wawancara}</textarea></div>`;
+            wawancaraHtml += programWrapperStart + currentWawancaraHtml + programWrapperEnd;
+
+            // Observasi Textarea
+            let currentObservasiHtml = `<div><textarea class="editable" id="${uniquePrefix}observasi">${data.observasi}</textarea></div>`;
+            observasiHtml += programWrapperStart + currentObservasiHtml + programWrapperEnd;
+        });
+
+        // Inject HTML into containers ONCE
+        document.getElementById(`bukti-${butir}-${indikatorIdx}`).innerHTML = buktiHtml;
+        document.getElementById(`level-${butir}-${indikatorIdx}`).innerHTML = levelHtml;
+        document.getElementById(`wawancara-${butir}-${indikatorIdx}`).innerHTML = wawancaraHtml;
+        document.getElementById(`observasi-${butir}-${indikatorIdx}`).innerHTML = observasiHtml;
+    }
+
+
+    // --- FUNGSI TOGGLE VISIBILITY ---
+    function toggleProgramVisibility() {
+        const selectedPrograms = [];
+        if (document.getElementById('progA').checked) selectedPrograms.push('A');
+        if (document.getElementById('progB').checked) selectedPrograms.push('B');
+        if (document.getElementById('progC').checked) selectedPrograms.push('C');
+
+        const programInputDivs = document.querySelectorAll('.program-input');
+
+        programInputDivs.forEach(div => {
+            const programDiv = div.getAttribute('data-program');
+            if (selectedPrograms.includes(programDiv)) {
+                div.style.display = 'block'; // Tampilkan jika programnya dipilih
+            } else {
+                div.style.display = 'none'; // Sembunyikan jika tidak dipilih
+            }
+        });
+    }
+
+
+    // --- FUNGSI UTAMA DAN PEMBATASAN AKSES ---
+    function jalankanFungsiIntiAplikasi() {
+        document.getElementById('mainAppContent').style.display = 'block';
+        document.getElementById('limitMessage').style.display = 'none';
+        document.getElementById('unlockSection').style.display = 'none';
+        attachActionListeners(); // Aktifkan listener tombol
+    }
+
+    function tampilkanPesanLimit() {
+        document.getElementById('mainAppContent').style.display = 'none';
+        document.getElementById('limitMessage').style.display = 'block';
+        document.getElementById('unlockSection').style.display = 'block';
+    }
+
+    const KODE_UNLOCK_RAHASIA = "TERIMAKASIH2025"; // Ganti jika perlu
+
+    document.getElementById('unlockButton').addEventListener('click', function() {
+        const kodeInput = document.getElementById('unlockCode').value;
+        if (kodeInput.trim() === KODE_UNLOCK_RAHASIA) {
+            localStorage.setItem('hasDonatedKangRuliApp', 'true');
+            alert('Terima kasih atas donasi Anda! Aplikasi kini dapat digunakan tanpa batas.');
+            location.reload();
+        } else {
+            alert('Kode unlock salah. Silakan coba lagi atau lakukan donasi terlebih dahulu.');
+        }
+    });
+
+    window.addEventListener('load', function() {
+        // 1. Generate dynamic inputs first
+        const butirProgram = [1, 2, 3, 4, 15];
+        // Pastikan jumlah indikator ini akurat sesuai tabel HTML Anda
+        const indikatorCounts = { 1: 4, 2: 3, 3: 5, 4: 4, 15: 3 };
+        butirProgram.forEach(butir => {
+             for (let i = 1; i <= indikatorCounts[butir]; i++) {
+                 // Check if containers exist before calling
+                 if (document.getElementById(`bukti-${butir}-${i}`)) {
+                    generateProgramInputs(butir, i);
+                 } else {
+                    console.error(`Container not found for Butir ${butir}, Indikator ${i}`);
+                 }
+             }
+        });
+        // 2. Initial visibility check based on checkboxes (usually none checked initially)
+        toggleProgramVisibility();
+
+        // 3. Then check usage limits
+        const sudahPernahPakai = localStorage.getItem('pernahPakaiKangRuliApp');
+        const sudahDonasi = localStorage.getItem('hasDonatedKangRuliApp');
+
+        if (sudahDonasi === 'true') {
+            jalankanFungsiIntiAplikasi();
+            const donationNoticeEl = document.querySelector('.donation-notice');
+            if(donationNoticeEl) donationNoticeEl.style.display = 'none';
+        } else if (sudahPernahPakai === 'true') {
+            tampilkanPesanLimit();
+        } else {
+            jalankanFungsiIntiAplikasi();
+            // Tandai penggunaan pertama HANYA jika belum donasi
+            if (sudahDonasi !== 'true') {
+                localStorage.setItem('pernahPakaiKangRuliApp', 'true');
+            }
+        }
+    });
+
+
+    // --- FUNGSI PERHITUNGAN DAN EKSPOR (Disesuaikan) ---
+    function attachActionListeners() {
+        document.getElementById('calculateButton').addEventListener('click', function() {
+            const levelsSatuan = document.querySelectorAll('tr[data-butir-group="satuan"] select.level-kinerja');
+            const levelsProgramVisible = document.querySelectorAll('tr[data-butir-group="program"] .program-input:not([style*="display: none"]) select.level-kinerja');
+
+            let totalScore = 0;
+            let count = 0;
+
+            levelsSatuan.forEach(select => {
+                totalScore += parseFloat(select.value);
+                count++;
+            });
+            levelsProgramVisible.forEach(select => {
+                totalScore += parseFloat(select.value);
+                count++;
+            });
+
+            const averageScore = count > 0 ? (totalScore / count) : 0;
+            let grade = 'TT';
+            let gradeColor = '#d9534f';
+
+            if (averageScore > 3.5) { grade = 'A'; gradeColor = '#28a745'; }
+            else if (averageScore > 2.5) { grade = 'B'; gradeColor = '#007bff'; }
+            else if (averageScore > 1.5) { grade = 'C'; gradeColor = '#fd7e14'; }
+
+            document.getElementById('finalScore').innerText = averageScore.toFixed(2);
+            document.getElementById('finalGrade').innerText = grade;
+            document.getElementById('finalGrade').style.color = gradeColor;
+            document.getElementById('resultContainer').style.display = 'block';
+        });
+
+        document.getElementById('exportButton').addEventListener('click', function() {
+            const namaAsesor = document.getElementById('namaAsesor').value;
+            const nia = document.getElementById('nia').value;
+            const namaSatuan = document.getElementById('namaSatuan').value;
+            const npsn = document.getElementById('npsn').value;
+            const fileName = `Rekapitulasi_Akreditasi_${namaSatuan.replace(/\s+/g, '_') || 'PKBM'}.doc`;
+
+            let tableContent = `<table border="1" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 10pt;"><thead style="background-color: #f2f2f2;"><tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;"><th style="padding: 8px; width: 20%;">Indikator</th><th style="padding: 8px; width: 25%;">Bukti/Dokumentasi</th><th style="padding: 8px; width: 27.5%;">Rekap Hasil Wawancara</th><th style="padding: 8px; width: 27.5%;">Rekap Hasil Observasi</th></tr></thead><tbody>`;
+
+            const rows = document.querySelectorAll('#rekapTable tbody tr');
             const selectedPrograms = [];
             if (document.getElementById('progA').checked) selectedPrograms.push('A');
             if (document.getElementById('progB').checked) selectedPrograms.push('B');
             if (document.getElementById('progC').checked) selectedPrograms.push('C');
 
-            const programInputDivs = document.querySelectorAll('.program-input');
+            rows.forEach(row => {
+                if (row.classList.contains('butir-header')) {
+                    tableContent += `<tr class="butir-header" style="background-color: #d9edf7;"><td colspan="4" style="padding: 8px; font-weight: bold;"><strong>${row.cells[0].innerText}</strong></td></tr>`;
+                } else if (row.classList.contains('data-row')) {
+                    const indikator = row.cells[0].innerText;
+                    const groupType = row.getAttribute('data-butir-group');
 
-            programInputDivs.forEach(div => {
-                const programDiv = div.getAttribute('data-program');
-                if (selectedPrograms.includes(programDiv)) {
-                    div.style.display = 'block'; // Tampilkan jika programnya dipilih
-                } else {
-                    div.style.display = 'none'; // Sembunyikan jika tidak dipilih
-                }
-            });
-        }
+                    if (groupType === 'program') {
+                        let combinedBukti = '';
+                        let combinedWawancara = '';
+                        let combinedObservasi = '';
 
-        // --- GENERATE INPUTS SAAT LOAD ---
-        window.addEventListener('load', () => {
-             // Generate inputs for Butir 1, 2, 3, 4, 15
-            const butirProgram = [1, 2, 3, 4, 15];
-            const indikatorCounts = { 1: 4, 2: 3, 3: 5, 4: 4, 15: 3 }; // Jumlah indikator per butir
+                        selectedPrograms.forEach(prog => {
+                            const programDivBukti = row.cells[1].querySelector(`.program-input[data-program="${prog}"]`);
+                            const programDivWawancara = row.cells[3].querySelector(`.program-input[data-program="${prog}"]`);
+                            const programDivObservasi = row.cells[4].querySelector(`.program-input[data-program="${prog}"]`);
 
-            butirProgram.forEach(butir => {
-                for (let i = 1; i <= indikatorCounts[butir]; i++) {
-                     generateProgramInputs(butir, i);
-                }
-            });
-            // Initial toggle based on default checkbox state (none checked)
-            toggleProgramVisibility();
-        });
-
-
-        // --- FUNGSI UTAMA DAN PEMBATASAN AKSES (Tetap Sama) ---
-        function jalankanFungsiIntiAplikasi() {
-            document.getElementById('mainAppContent').style.display = 'block';
-            document.getElementById('limitMessage').style.display = 'none';
-            document.getElementById('unlockSection').style.display = 'none';
-            attachActionListeners(); // Aktifkan listener tombol
-        }
-
-        function tampilkanPesanLimit() {
-            document.getElementById('mainAppContent').style.display = 'none';
-            document.getElementById('limitMessage').style.display = 'block';
-            document.getElementById('unlockSection').style.display = 'block';
-        }
-
-        const KODE_UNLOCK_RAHASIA = "TERIMAKASIH2025"; // Ganti jika perlu
-
-        document.getElementById('unlockButton').addEventListener('click', function() {
-            const kodeInput = document.getElementById('unlockCode').value;
-            if (kodeInput.trim() === KODE_UNLOCK_RAHASIA) {
-                localStorage.setItem('hasDonatedKangRuliApp', 'true');
-                alert('Terima kasih atas donasi Anda! Aplikasi kini dapat digunakan tanpa batas.');
-                location.reload();
-            } else {
-                alert('Kode unlock salah. Silakan coba lagi atau lakukan donasi terlebih dahulu.');
-            }
-        });
-
-        window.addEventListener('load', function() {
-            // Generate dynamic inputs first
-            const butirProgram = [1, 2, 3, 4, 15];
-            const indikatorCounts = { 1: 4, 2: 3, 3: 5, 4: 4, 15: 3 };
-            butirProgram.forEach(butir => {
-                 for (let i = 1; i <= indikatorCounts[butir]; i++) {
-                     // We need to call generateProgramInputs inside the load event
-                     // Check if containers exist before calling
-                     if (document.getElementById(`bukti-${butir}-${i}`)) {
-                        generateProgramInputs(butir, i);
-                     }
-                 }
-            });
-            toggleProgramVisibility(); // Initial visibility check
-
-            // Then check usage limits
-            const sudahPernahPakai = localStorage.getItem('pernahPakaiKangRuliApp');
-            const sudahDonasi = localStorage.getItem('hasDonatedKangRuliApp');
-
-            if (sudahDonasi === 'true') {
-                jalankanFungsiIntiAplikasi();
-                const donationNoticeEl = document.querySelector('.donation-notice');
-                if(donationNoticeEl) donationNoticeEl.style.display = 'none';
-            } else if (sudahPernahPakai === 'true') {
-                tampilkanPesanLimit();
-            } else {
-                jalankanFungsiIntiAplikasi();
-                localStorage.setItem('pernahPakaiKangRuliApp', 'true');
-            }
-        });
-
-
-        // --- FUNGSI PERHITUNGAN DAN EKSPOR (Disesuaikan) ---
-        function attachActionListeners() {
-            document.getElementById('calculateButton').addEventListener('click', function() {
-                // Kumpulkan skor dari Butir 5-14 (satuan)
-                const levelsSatuan = document.querySelectorAll('tr[data-butir-group="satuan"] select.level-kinerja');
-                // Kumpulkan skor HANYA dari program yang VISIBLE untuk Butir 1-4, 15
-                const levelsProgram = document.querySelectorAll('tr[data-butir-group="program"] .program-input:not([style*="display: none"]) select.level-kinerja');
-
-                let totalScore = 0;
-                let count = 0;
-
-                levelsSatuan.forEach(select => {
-                    totalScore += parseFloat(select.value);
-                    count++;
-                });
-                levelsProgram.forEach(select => {
-                    totalScore += parseFloat(select.value);
-                    count++;
-                });
-
-                 // Pastikan ada input yang dihitung untuk menghindari pembagian dengan nol
-                const averageScore = count > 0 ? (totalScore / count) : 0;
-                let grade = 'TT';
-                let gradeColor = '#d9534f';
-
-                if (averageScore > 3.5) { grade = 'A'; gradeColor = '#28a745'; }
-                else if (averageScore > 2.5) { grade = 'B'; gradeColor = '#007bff'; }
-                else if (averageScore > 1.5) { grade = 'C'; gradeColor = '#fd7e14'; }
-
-                document.getElementById('finalScore').innerText = averageScore.toFixed(2);
-                document.getElementById('finalGrade').innerText = grade;
-                document.getElementById('finalGrade').style.color = gradeColor;
-                document.getElementById('resultContainer').style.display = 'block';
-            });
-
-            document.getElementById('exportButton').addEventListener('click', function() {
-                const namaAsesor = document.getElementById('namaAsesor').value;
-                const nia = document.getElementById('nia').value;
-                const namaSatuan = document.getElementById('namaSatuan').value;
-                const npsn = document.getElementById('npsn').value;
-                const fileName = `Rekapitulasi_Akreditasi_${namaSatuan.replace(/\s+/g, '_') || 'PKBM'}.doc`;
-
-                // Header HTML untuk Word (4 Kolom)
-                 let tableContent = `<table border="1" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 10pt;"><thead style="background-color: #f2f2f2;"><tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;"><th style="padding: 8px; width: 20%;">Indikator</th><th style="padding: 8px; width: 25%;">Bukti/Dokumentasi</th><th style="padding: 8px; width: 27.5%;">Rekap Hasil Wawancara</th><th style="padding: 8px; width: 27.5%;">Rekap Hasil Observasi</th></tr></thead><tbody>`;
-
-                const rows = document.querySelectorAll('#rekapTable tbody tr');
-                const selectedPrograms = [];
-                if (document.getElementById('progA').checked) selectedPrograms.push('A');
-                if (document.getElementById('progB').checked) selectedPrograms.push('B');
-                if (document.getElementById('progC').checked) selectedPrograms.push('C');
-
-                rows.forEach(row => {
-                    if (row.classList.contains('butir-header')) {
-                        tableContent += `<tr class="butir-header" style="background-color: #d9edf7;"><td colspan="4" style="padding: 8px; font-weight: bold;"><strong>${row.cells[0].innerText}</strong></td></tr>`;
-                    } else if (row.classList.contains('data-row')) {
-                        const indikator = row.cells[0].innerText; // Ambil teks indikator
-                        const groupType = row.getAttribute('data-butir-group');
-
-                        if (groupType === 'program') {
-                            // Untuk butir per program, gabungkan data dari program yang dipilih
-                            let combinedBukti = '';
-                            let combinedWawancara = '';
-                            let combinedObservasi = '';
-
-                            selectedPrograms.forEach(prog => {
-                                const progLower = prog.toLowerCase();
-                                const programDivBukti = row.querySelector(`#bukti-${row.rowIndex}-${selectedPrograms.indexOf(prog)+1} .program-input.paket-${progLower}`); // Selector perlu lebih spesifik
-                                const programDivWawancara = row.querySelector(`#wawancara-${row.rowIndex}-${selectedPrograms.indexOf(prog)+1} .program-input.paket-${progLower}`);
-                                const programDivObservasi = row.querySelector(`#observasi-${row.rowIndex}-${selectedPrograms.indexOf(prog)+1} .program-input.paket-${progLower}`);
-
-                                // Perlu ID unik atau cara lain untuk select input di dalam div
-                                // Kode di bawah ini asumsi kasar, perlu diperbaiki selectornya
-                                const buktiCheckboxes = row.querySelectorAll(`.program-input.paket-${progLower} input[type="checkbox"]:checked`);
-                                const wawancaraText = row.querySelector(`.program-input.paket-${progLower} textarea.editable`)?.value.replace(/\n/g, '<br>') || '';
-                                const observasiText = row.querySelectorAll(`.program-input.paket-${progLower} textarea.editable`)[1]?.value.replace(/\n/g, '<br>') || ''; // Asumsi textarea ke-2
-
-
-                                if (selectedPrograms.length > 1) {
-                                     combinedBukti += `<strong>Paket ${prog}:</strong><ol style="margin: 0; padding-left: 20px;">`;
-                                     combinedWawancara += `<strong>Paket ${prog}:</strong><br>${wawancaraText}<br><br>`;
-                                     combinedObservasi += `<strong>Paket ${prog}:</strong><br>${observasiText}<br><br>`;
-                                } else {
-                                     combinedBukti += `<ol style="margin: 0; padding-left: 20px;">`;
-                                     combinedWawancara += `${wawancaraText}`;
-                                     combinedObservasi += `${observasiText}`;
-                                }
-
-
+                            // Pastikan div program ada dan visible sebelum mengambil data
+                            if (programDivBukti && programDivBukti.style.display !== 'none') {
+                                if (selectedPrograms.length > 1) combinedBukti += `<strong>Paket ${prog}:</strong>`;
+                                combinedBukti += '<ol style="margin: 0; padding-left: 20px;">';
+                                const buktiCheckboxes = programDivBukti.querySelectorAll('input[type="checkbox"]:checked');
                                 if (buktiCheckboxes.length > 0) {
                                     buktiCheckboxes.forEach(cb => { combinedBukti += `<li>${cb.value}</li>`; });
-                                } else {
-                                    combinedBukti += '<li>-</li>';
-                                }
+                                } else { combinedBukti += '<li>-</li>'; }
                                 combinedBukti += '</ol>';
                                 if (selectedPrograms.length > 1) combinedBukti += '<br>';
+                            }
 
-                            });
-                             tableContent += `<tr><td style="padding: 8px; vertical-align: top;">${indikator}</td><td style="padding: 8px; vertical-align: top;">${combinedBukti || '-'}</td><td style="padding: 8px; vertical-align: top;">${combinedWawancara || '-'}</td><td style="padding: 8px; vertical-align: top;">${combinedObservasi || '-'}</td></tr>`;
+                             if (programDivWawancara && programDivWawancara.style.display !== 'none') {
+                                 const wawancaraText = programDivWawancara.querySelector('textarea.editable')?.value.replace(/\n/g, '<br>') || '';
+                                 if (selectedPrograms.length > 1) combinedWawancara += `<strong>Paket ${prog}:</strong><br>`;
+                                 combinedWawancara += `${wawancaraText}`;
+                                 if (selectedPrograms.length > 1) combinedWawancara += '<br><br>';
+                             }
 
-                        } else { // groupType === 'satuan'
-                             let buktiList = '<ol style="margin: 0; padding-left: 20px;">';
-                             const checkedBukti = row.cells[1].querySelectorAll('input[type="checkbox"]:checked');
-                             if (checkedBukti.length > 0) {
-                                 checkedBukti.forEach(cb => { buktiList += `<li>${cb.value}</li>`; });
-                             } else { buktiList += '<li>-</li>'; }
-                             buktiList += '</ol>';
-
-                             const wawancara = row.cells[3].querySelector('textarea').value.replace(/\n/g, '<br>');
-                             const observasi = row.cells[4].querySelector('textarea').value.replace(/\n/g, '<br>');
-                             tableContent += `<tr><td style="padding: 8px; vertical-align: top;">${indikator}</td><td style="padding: 8px; vertical-align: top;">${buktiList}</td><td style="padding: 8px; vertical-align: top;">${wawancara}</td><td style="padding: 8px; vertical-align: top;">${observasi}</td></tr>`;
+                             if (programDivObservasi && programDivObservasi.style.display !== 'none') {
+                                 const observasiText = programDivObservasi.querySelector('textarea.editable')?.value.replace(/\n/g, '<br>') || '';
+                                 if (selectedPrograms.length > 1) combinedObservasi += `<strong>Paket ${prog}:</strong><br>`;
+                                 combinedObservasi += `${observasiText}`;
+                                 if (selectedPrograms.length > 1) combinedObservasi += '<br><br>';
+                             }
+                        });
+                        // Hapus <br><br> ekstra di akhir jika ada multiple program
+                        if(selectedPrograms.length > 1) {
+                            combinedWawancara = combinedWawancara.replace(/<br><br>$/, '');
+                            combinedObservasi = combinedObservasi.replace(/<br><br>$/, '');
                         }
+                        tableContent += `<tr><td style="padding: 8px; vertical-align: top;">${indikator}</td><td style="padding: 8px; vertical-align: top;">${combinedBukti || '-'}</td><td style="padding: 8px; vertical-align: top;">${combinedWawancara || '-'}</td><td style="padding: 8px; vertical-align: top;">${combinedObservasi || '-'}</td></tr>`;
+
+                    } else { // groupType === 'satuan'
+                         let buktiList = '<ol style="margin: 0; padding-left: 20px;">';
+                         const checkedBukti = row.cells[1].querySelectorAll('input[type="checkbox"]:checked');
+                         if (checkedBukti.length > 0) {
+                             checkedBukti.forEach(cb => { buktiList += `<li>${cb.value}</li>`; });
+                         } else { buktiList += '<li>-</li>'; }
+                         buktiList += '</ol>';
+
+                         const wawancara = row.cells[3].querySelector('textarea').value.replace(/\n/g, '<br>');
+                         const observasi = row.cells[4].querySelector('textarea').value.replace(/\n/g, '<br>');
+                         tableContent += `<tr><td style="padding: 8px; vertical-align: top;">${indikator}</td><td style="padding: 8px; vertical-align: top;">${buktiList}</td><td style="padding: 8px; vertical-align: top;">${wawancara}</td><td style="padding: 8px; vertical-align: top;">${observasi}</td></tr>`;
                     }
-                });
-                tableContent += '</tbody></table>';
-
-                // --- Sisa kode ekspor (hasil akhir, footer, generate file) tetap sama ---
-                const finalScoreText = document.getElementById('finalScore').innerText;
-                const finalGradeText = document.getElementById('finalGrade').innerText;
-                const resultContainerVisible = document.getElementById('resultContainer').style.display;
-                let finalResultHtml = '';
-                if (resultContainerVisible !== 'none') {
-                    finalResultHtml = `<br><hr><h3 style="text-align: center;">Hasil Akhir Akreditasi</h3><div class="header-info" style="font-size: 12pt; text-align: center;"><p style="margin: 5px 0;"><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p><p style="margin: 5px 0;"><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p></div>`;
                 }
-                const wordFooter = `<br><br><p style="text-align: center; margin-top: 20px; font-style: italic; color: #555; font-size: 9pt;">www.kangruli.web.id</p>`;
-                const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><style>@page Section1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 20%; } table colgroup col:nth-child(2) { width: 25%; } table colgroup col:nth-child(3) { width: 27.5%; } table colgroup col:nth-child(4) { width: 27.5%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:20%"><col style="width:25%"><col style="width:27.5%"><col style="width:27.5%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
-                const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
-                const fileDownload = document.createElement("a");
-                document.body.appendChild(fileDownload);
-                fileDownload.href = source;
-                fileDownload.download = fileName;
-                fileDownload.click();
-                document.body.removeChild(fileDownload);
             });
-        }
+            tableContent += '</tbody></table>';
 
-    </script>
+            // --- Sisa kode ekspor (hasil akhir, footer, generate file) tetap sama ---
+            const finalScoreText = document.getElementById('finalScore').innerText;
+            const finalGradeText = document.getElementById('finalGrade').innerText;
+            const resultContainerVisible = document.getElementById('resultContainer').style.display;
+            let finalResultHtml = '';
+            if (resultContainerVisible !== 'none') {
+                finalResultHtml = `<br><hr><h3 style="text-align: center;">Hasil Akhir Akreditasi</h3><div class="header-info" style="font-size: 12pt; text-align: center;"><p style="margin: 5px 0;"><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p><p style="margin: 5px 0;"><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p></div>`;
+            }
+            const wordFooter = `<br><br><p style="text-align: center; margin-top: 20px; font-style: italic; color: #555; font-size: 9pt;">www.kangruli.web.id</p>`;
+            const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><style>@page Section1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 20%; } table colgroup col:nth-child(2) { width: 25%; } table colgroup col:nth-child(3) { width: 27.5%; } table colgroup col:nth-child(4) { width: 27.5%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:20%"><col style="width:25%"><col style="width:27.5%"><col style="width:27.5%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
+            const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
+            const fileDownload = document.createElement("a");
+            document.body.appendChild(fileDownload);
+            fileDownload.href = source;
+            fileDownload.download = fileName;
+            fileDownload.click();
+            document.body.removeChild(fileDownload);
+        });
+    }
+
+</script>
 
 </body>
 </html>
