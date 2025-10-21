@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Rekapitulasi Akreditasi</title>
+    <style>
+        /* CSS untuk halaman web */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        h1 {
+            color: #005a9c;
+            text-align: center;
+            border-bottom: 2px solid #005a9c;
+            padding-bottom: 10px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+        .form-group input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box; /* Memastikan padding tidak menambah lebar */
+            font-size: 1rem;
+        }
+        .export-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .export-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Formulir Rekapitulasi Akreditasi</h1>
+        <p style="text-align: center; margin-top: -10px; margin-bottom: 30px;">Masukkan data di bawah ini untuk diekspor bersama dengan tabel rekapitulasi.</p>
+
+        <div class="form-group">
+            <label for="namaAsesor">Nama Asesor:</label>
+            <input type="text" id="namaAsesor" value="RULI LESMANA, S.T">
+        </div>
+
+        <div class="form-group">
+            <label for="nia">NIA:</label>
+            <input type="text" id="nia" value="3205201810114501">
+        </div>
+
+        <div class="form-group">
+            <label for="namaSatuan">Nama Satuan Pendidikan:</label>
+            <input type="text" id="namaSatuan" value="PKBM KENANGA">
+        </div>
+
+        <div class="form-group">
+            <label for="npsn">NPSN:</label>
+            <input type="text" id="npsn" value="P9934695">
+        </div>
+
+        <button id="exportButton" class="export-button">Ekspor ke Word (.doc)</button>
+    </div>
+
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function() {
+            // 1. Ambil nilai dari input fields
+            const namaAsesor = document.getElementById('namaAsesor').value;
+            const nia = document.getElementById('nia').value;
+            const namaSatuan = document.getElementById('namaSatuan').value;
+            const npsn = document.getElementById('npsn').value;
+            
+            // 2. Buat nama file yang dinamis
+            const fileName = `Rekapitulasi_Akreditasi_${namaSatuan.replace(/\s+/g, '_') || 'PKBM'}.doc`;
+
+            // 3. Data tabel statis (sesuai permintaan Anda)
+            // Ini adalah konten utama dari dokumen Word
+            const tableContent = `
+                <table border="1" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 10pt;">
+                    <thead style="background-color: #f2f2f2;">
+                        <tr class="table-header" style="background-color: #e0e0e0; font-weight: bold; text-align: center;">
+                            <th style="padding: 8px; width: 20%;">Indikator</th>
+                            <th style="padding: 8px; width: 20%;">Bukti/Dokumentasi yang digunakan sebagai bukti</th>
+                            <th style="padding: 8px; width: 30%;">Rekap Hasil Wawancara</th>
+                            <th style="padding: 8px; width: 30%;">Rekap Hasil Observasi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 1: Pendidik Menyediakan Dukungan Sosial Emosional</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Interaksi yang setara dan saling menghargai.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. RPP dan Kurikulum<br>2. Observasi Kelas<br>3. Wawancara dengan perwakilan pendidik<br>4. Wawancara dengan minimal 5 peserta didik<br>5. Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik memahami latar belakang dan karakteristik peserta didik. Pendidik terbuka dalam berkomunikasi, memberikan motivasi, dan menciptakan suasana kelas yang nyaman, menerapkan prinsip kesetaraan dan empati.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik aktif menjalin komunikasi dua arah dengan pendekatan ramah dan inklusif, memberi kesempatan berpendapat, dan menyesuaikan metode. Lingkungan belajar kondusif.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Interaksi yang membangun pola pikir bertumbuh.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. RPP dan Kurikulum<br>2. Observasi Kelas<br>3. Wawancara dengan perwakilan pendidik<br>4. Wawancara dengan minimal 5 peserta didik<br>5. Observasi interaksi pendidik–peserta didik</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik menciptakan suasana belajar yang aman dan menyenangkan, melibatkan peserta didik dalam penyusunan peraturan kelas, memberi umpan balik positif, dan mendorong peserta didik untuk berpikir terbuka.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik aktif membangun interaksi positif dengan komunikasi dua arah. Pendidik memberi penguatan dan apresiasi, serta menyesuaikan pendekatan pembelajaran untuk pertumbuhan.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Memberi perhatian dan bantuan pada peserta didik yang membutuhkan dukungan lebih/ekstra.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. RPP dan Kurikulum<br>2. Observasi Kelas<br>3. Wawancara dengan perwakilan pendidik<br>4. Wawancara dengan minimal 5 peserta didik<br>5. Observasi interaksi pendidik–peserta didik</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik aktif memberikan perhatian khusus kepada yang kesulitan belajar, sabar membimbing, dan mendorong peserta didik lain untuk saling membantu. Peserta didik merasa nyaman.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik tanggap terhadap kebutuhan belajar, memberikan bimbingan langsung, dan mengarahkan teman sebaya untuk membantu. Interaksi hangat dan iklim belajar inklusif.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Strategi pembelajaran yang membangun keterampilan sosial emosional pada peserta didik.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. RPP dan Kurikulum<br>2. Observasi Kelas<br>3. Wawancara dengan perwakilan pendidik<br>4. Wawancara dengan minimal 5 peserta didik<br>5. Observasi interaksi pendidik–peserta didik</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik memiliki perhatian tinggi terhadap keberagaman, membimbing yang kesulitan dengan sabar, dan mendorong gotong royong. Peserta didik merasa dihargai dan termotivasi.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik menciptakan suasana kelas positif dan penuh kepedulian, memberi bimbingan langsung, dan mengajak teman sekelas untuk membantu. Komunikasi hangat dan kolaboratif.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 2: Pendidik Mengelola Kelas</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kesepakatan kelas/kelompok yang disusun secara partisipatif.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Tata tertib kelas<br>2. Jadwal piket<br>3. Daftar hadir<br>4. Dokumentasi kegiatan observasi<br>5. Wawancara dengan pendidik dan warga belajar</td>
+                            <td style="padding: 8px; vertical-align: top;">Kesepakatan kelas disusun melalui musyawarah bersama. Keterlibatan warga belajar menumbuhkan rasa tanggung jawab dan meningkatkan kedisiplinan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya penerapan tata tertib dan jadwal piket yang tertib. Warga belajar melaksanakan tugas. Suasana belajar kondusif.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Penegakan disiplin dengan pendekatan positif.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Poster kedisiplinan<br>2. Dokumentasi kegiatan observasi<br>3. Wawancara dengan pendidik dan warga belajar</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik menerapkan disiplin dengan pendekatan positif dan humanis (teguran santun). Warga belajar merasa dihargai dan termotivasi untuk memperbaiki sikap.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik menegakkan disiplin secara konsisten namun tetap hangat. Warga belajar mengikuti aturan dengan tertib.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kemampuan pendidik dalam mengelola kegiatan belajar sehingga peserta didik fokus pada aktivitas belajar.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Jadwal pembelajaran<br>2. Tata tertib kelas<br>3. RPP<br>4. Dokumen kurikulum</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik mampu menciptakan suasana belajar yang terarah dan menarik dengan metode variatif. Pendidik aktif mengatur jalannya kegiatan agar semua peserta tetap fokus.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik mengelola kegiatan sesuai perencanaan, mengatur waktu efektif, dan menyesuaikan strategi. Peserta didik terlihat fokus, aktif berdiskusi, dan terlibat.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 3: Pendidik Mengelola Proses Pembelajaran</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Perencanaan yang memadai untuk mendukung pelaksanaan pembelajaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. RPP atau Modul Ajar<br>2. Dokumen perencanaan pembelajaran tahunan atau mingguan</td>
+                            <td style="padding: 8px; vertical-align: top;">Perencanaan sistematis melalui penyusunan RPP/modul ajar yang disesuaikan dengan karakteristik warga belajar. Tujuan, metode, dan asesmen disusun jelas.</td>
+                            <td style="padding: 8px; vertical-align: top;">Kegiatan pembelajaran berjalan sesuai perencanaan. Pendidik menggunakan perangkat ajar dengan baik, mengelola waktu efektif, dan menyesuaikan strategi.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Penilaian formatif digunakan sebagai umpan balik dalam proses pembelajaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Lembar penilaian formatif<br>2. Catatan umpan balik pendidik<br>3. Observasi interaksi pendidik–peserta didik saat memberi feedback</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik rutin melaksanakan penilaian formatif, memberikan umpan balik langsung berupa saran perbaikan, apresiasi, dan dorongan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik aktif memberikan umpan balik. Hasil penilaian formatif digunakan untuk menyesuaikan pendekatan dan memperkuat pemahaman.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Penilaian sumatif dilakukan dengan metode yang beragam menggunakan instrumen yang sesuai dengan tujuan pembelajaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Soal ulangan, proyek, atau tugas akhir<br>2. Instrumen penilaian sumatif<br>3. Dokumentasi pelaksanaan penilaian</td>
+                            <td style="padding: 8px; vertical-align: top;">Penilaian sumatif menggunakan berbagai metode (ujian tertulis, proyek, presentasi) dan disesuaikan dengan capaian pembelajaran agar hasilnya objektif dan komprehensif.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pelaksanaan penilaian sumatif tertib dan sesuai instrumen. Peserta didik memahami bentuk penilaian dan berpartisipasi serius.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Hasil penilaian dilaporkan secara informatif untuk mendorong tindak lanjut perbaikan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Laporan penilaian peserta didik<br>2. Catatan tindak lanjut pembelajaran<br>3. Dokumentasi pembahasan hasil penilaian</td>
+                            <td style="padding: 8px; vertical-align: top;">Hasil penilaian disampaikan secara terbuka melalui rapor, catatan refleksi, atau pertemuan. Informasi digunakan sebagai dasar bimbingan lanjutan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik aktif membahas hasil penilaian, memberikan penjelasan mengenai capaian dan area yang perlu diperbaiki, serta mendorong penetapan target perbaikan.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Praktik pembelajaran yang memfasilitasi peserta didik untuk menganalisis, mengutarakan gagasan, dan menghubungkan pengetahuannya dengan pengetahuan baru dan konteks aplikatif.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Catatan diskusi kelas<br>2. Dokumentasi presentasi hasil diskusi<br>3. Observasi partisipasi peserta didik dalam aktivitas analisis dan refleksi</td>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran memberi ruang untuk berdiskusi, menyampaikan pendapat, dan mengaitkan teori dengan pengalaman pribadi. Pendidik mendorong berpikir kritis dan reflektif.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik aktif dalam diskusi dan analisis, mampu menghubungkan konsep dengan contoh kehidupan nyata. Pendidik memfasilitasi dengan pertanyaan pemantik.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 4: Pendidik Memfasilitasi Pembelajaran yang Efektif (Karakter & Kompetensi)</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran yang efektif dalam menguatkan keimanan dan ketakwaan peserta didik kepada Tuhan YME untuk membentuk akhlak yang mulia.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi kegiatan keagamaan<br>2. Dokumentasi partisipasi peserta didik dalam pengajian/doa bersama<br>3. Catatan guru mengenai penerapan nilai keimanan dalam pembelajaran</td>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran konsisten diawali dan diakhiri dengan doa bersama. Peserta didik dibiasakan berperilaku sopan, saling menghormati, dan menolong sesama sebagai penerapan nilai keimanan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik mengikuti kegiatan keagamaan dengan kesadaran dan antusias. Nilai religius terlihat dari sikap santun dan disiplin.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran yang efektif dalam menguatkan kecintaan terhadap sejarah, kekayaan budaya, alam Indonesia, pemikiran, dan karya anak bangsa.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumentasi kunjungan ke Museum Geologi<br>2. Catatan pelajaran IPS dan sejarah<br>3. Foto kegiatan pembelajaran lapangan</td>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran IPS dan sejarah disertai kegiatan eksploratif (kunjungan edukatif). Kegiatan tersebut membuat peserta didik lebih memahami dan menghargai perjuangan bangsa dan kekayaan budaya.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik aktif dalam diskusi sejarah dan budaya daerah, menunjukkan rasa ingin tahu tinggi saat kunjungan lapangan, menggambarkan tumbuhnya rasa bangga dan cinta tanah air.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran yang efektif dalam memfasilitasi peserta didik untuk mengembangkan kemampuan bernalar dan memecahkan masalah.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Lembar soal dan tugas bernalar<br>2. Observasi diskusi kelas<br>3. Catatan guru tentang aktivitas berpikir kritis peserta didik</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik diberikan latihan soal berbasis analisis dan diskusi kelompok untuk mengasah berpikir kritis. Peserta didik terbantu karena belajar menemukan solusi melalui kerja sama dan argumentasi logis.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik mampu menganalisis permasalahan secara sistematis, aktif berdiskusi, dan menyimpulkan. Kegiatan ini meningkatkan keterampilan bernalar.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran yang efektif dalam membangun kompetensi dan/atau karakter peserta didik sesuai kekhasan satuan pendidikan penyelenggara program pendidikan kesetaraan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. RPP dan modul ajar<br>2. Observasi perilaku peserta didik<br>3. Dokumentasi kegiatan pembelajaran berbasis karakter</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik menyesuaikan metode dan materi dengan karakter dan kebutuhan warga belajar. Peserta didik dilatih untuk mandiri, beretika, dan berperilaku positif.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik menunjukkan tanggung jawab dalam menyelesaikan tugas dan aktif dalam kegiatan kelompok, serta menunjukkan sikap saling menghormati dan gotong royong.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 5: Penyelenggara Menerapkan Budaya Refleksi dan Evaluasi Kinerja</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Fasilitasi kepada pendidik dan tenaga kependidikan untuk melakukan refleksi kinerja dalam rangka perbaikan pembelajaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen visi dan misi PKBM<br>2. Hasil wawancara dengan peserta didik dan pemangku kepentingan</td>
+                            <td style="padding: 8px; vertical-align: top;">Refleksi kinerja dilakukan setiap tiga bulan sekali melalui rapat evaluasi dan supervisi. Guru diberikan kesempatan menyampaikan kendala dan rencana tindak lanjut.</td>
+                            <td style="padding: 8px; vertical-align: top;">Rapat evaluasi diikuti oleh seluruh guru. Guru aktif berdiskusi dan menulis jurnal refleksi.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Evaluasi kinerja dalam rangka meningkatkan kualitas pembelajaran yang dilakukan oleh penyelenggara secara berkala dan sistematis.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen kerja sama dengan mitra dan desa<br>2. Foto kegiatan magang dan pelatihan</td>
+                            <td style="padding: 8px; vertical-align: top;">Evaluasi kinerja dilaksanakan bersama antara penyelenggara dan pendidik untuk memastikan peningkatan kualitas pembelajaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya kegiatan evaluasi kinerja dengan instrumen supervisi. Hasilnya digunakan untuk memperbaiki strategi pembelajaran.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Program pengembangan profesional pendidik untuk peningkatan kualitas pembelajaran telah dilakukan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Hasil evaluasi berbasis data<br>2. Notulen rapat refleksi yang melibatkan pemangku kepentingan<br>3. Instrumen evaluasi yang digunakan</td>
+                            <td style="padding: 8px; vertical-align: top;">Guru mengikuti berbagai kegiatan pengembangan profesional (pelatihan, workshop, lomba). Beberapa guru memperoleh sertifikat dan penghargaan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Dokumentasi kegiatan pelatihan dan sertifikat penghargaan tersedia. Guru mengimplementasikan hasil pelatihan dalam pembelajaran.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pengelolaan pendidik dan tenaga kependidikan yang efektif dan akuntabel dalam hal pemberian penghargaan atau sanksi berbasis kinerja.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen perencanaan tahunan berbasis data evaluasi<br>2. Notulen rapat perencanaan<br>3. Laporan hasil refleksi sebelumnya</td>
+                            <td style="padding: 8px; vertical-align: top;">Pemberian penghargaan dan sanksi dilakukan secara transparan dan berdasarkan kinerja nyata guru.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya sistem penghargaan dan rapat penilaian kinerja yang dilaksanakan secara terbuka dan partisipatif.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 6: Penyelenggara Menghadirkan Layanan Belajar Partisipatif dan Kolaboratif</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Penyelenggara program pendidikan kesetaraan memiliki visi dan misi yang jelas serta mengkomunikasikannya kepada para pemangku kepentingan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen visi dan misi PKBM<br>2. Hasil wawancara dengan peserta didik dan pemangku kepentingan</td>
+                            <td style="padding: 8px; vertical-align: top;">Visi dan misi disosialisasikan melalui kegiatan orientasi dan pertemuan rutin. Semua pemangku kepentingan memahami arah dan tujuan lembaga.</td>
+                            <td style="padding: 8px; vertical-align: top;">Papan visi dan misi terpajang di ruang utama PKBM dan disampaikan dalam setiap kegiatan pembukaan program pembelajaran.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Adanya kolaborasi atau kemitraan dengan berbagai pihak (termasuk orang tua/wali, mitra, dudi, dst) dalam rangka mendukung penyelenggaraan layanan pendidikan secara efektif.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen kerjasama dengan mitra dan desa<br>2. Foto kegiatan magang dan pelatihan<br>3. Dokumen pengadaan buku perpustakaan</td>
+                            <td style="padding: 8px; vertical-align: top;">Lembaga menjalin kemitraan dengan Desa Margahurif, Bandung Cloth Project, dan beberapa dunia usaha untuk program ATS, magang, dan pengadaan buku.</td>
+                            <td style="padding: 8px; vertical-align: top;">Observasi memperlihatkan kegiatan pelatihan desain kaos, dokumentasi magang, dan buku dari mitra. Keterlibatan aktif peserta didik dan mitra terlihat.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pelaksanaan evaluasi/refleksi berbasis data yang melibatkan berbagai pihak yang relevan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Hasil evaluasi berbasis data<br>2. Notulen rapat refleksi yang melibatkan pemangku kepentingan<br>3. Instrumen evaluasi yang digunakan</td>
+                            <td style="padding: 8px; vertical-align: top;">Evaluasi dan refleksi dilakukan secara berkala melibatkan guru, peserta didik, dan perwakilan masyarakat untuk memperbaiki layanan pendidikan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Rapat refleksi menggunakan data kehadiran, hasil belajar, dan umpan balik peserta didik sebagai dasar pengambilan keputusan.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Perencanaan kegiatan tahunan dilakukan berdasarkan data yang diperoleh dari evaluasi/refleksi.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen perencanaan tahunan berbasis data evaluasi<br>2. Notulen rapat perencanaan<br>3. Laporan hasil refleksi sebelumnya</td>
+                            <td style="padding: 8px; vertical-align: top;">Penyusunan rencana kegiatan tahunan mengacu pada hasil refleksi tahun sebelumnya untuk memastikan program relevan dengan kebutuhan warga belajar.</td>
+                            <td style="padding: 8px; vertical-align: top;">Dokumen rencana kerja tahunan memuat tindak lanjut hasil evaluasi. Kegiatan disesuaikan dengan capaian dan kebutuhan pembelajaran.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 7: Pengelolaan Anggaran Transparan dan Akuntabel</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Anggaran program pendidikan kesetaraan dilaksanakan sesuai dengan perencanaan tahunan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Dokumen pengelolaan anggaran sesuai perencanaan tahunan</td>
+                            <td style="padding: 8px; vertical-align: top;">Anggaran dikelola berdasarkan rencana tahunan. Setiap kegiatan dan pengeluaran mengikuti prioritas program, sehingga penggunaannya tepat sasaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya dokumen Rencana Kegiatan dan Anggaran Tahunan (RKAT) sebagai acuan. Pengeluaran tercatat rapi dan sesuai rencana.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Rencana anggaran program pendidikan kesetaraan menunjukkan sumber pendanaan serta alokasi pemanfaatannya.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen rencana anggaran program pendidikan kesetaraan<br>2. Bukti pengadaan sarana dan prasarana</td>
+                            <td style="padding: 8px; vertical-align: top;">Sumber pendanaan dari APBN (BOS), bantuan APBD, dan dukungan desa (laptop/server). Setiap alokasi dana dicatat untuk transparansi.</td>
+                            <td style="padding: 8px; vertical-align: top;">Dokumen menunjukkan rincian anggaran yang jelas, termasuk sumber dana dan penggunaannya. Bukti pengadaan sarana dan prasarana tersedia.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Ada laporan berkala tentang pemanfaatan anggaran program pendidikan kesetaraan kepada pemangku kepentingan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Laporan pemanfaatan anggaran ke Kabupaten dan Dinas Pendidikan<br>2. Laporan pemanfaatan anggaran ke yayasan per semester<br>3. Notulen rapat penyampaian laporan</td>
+                            <td style="padding: 8px; vertical-align: top;">Pelaporan anggaran dilakukan secara berkala (Desember ke Dinas Pendidikan Kabupaten bidang PNF dan setiap semester ke yayasan) untuk menjaga transparansi dan akuntabilitas.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya laporan tertulis pemanfaatan anggaran dan notulen rapat penyampaian laporan yang tersimpan baik dan dapat diakses.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 8: Pengelolaan Sarana dan Prasarana</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pemenuhan sarana dan prasarana yang sesuai dengan kebutuhan belajar peserta didik (dapat disediakan secara mandiri maupun bermitra).</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen pengadaan sarana dan prasarana<br>2. Bukti pemberian laptop dan server oleh APBD<br>3. Inventaris sarana dan prasarana</td>
+                            <td style="padding: 8px; vertical-align: top;">Sarana dan prasarana disediakan sesuai kebutuhan, baik secara mandiri maupun bermitra (contoh: bantuan laptop dan server dari APBD).</td>
+                            <td style="padding: 8px; vertical-align: top;">Sarana dan prasarana (laptop, server, meja, kursi) tersedia dan digunakan efektif. Dokumen inventaris dan bukti pengadaan tertata rapi.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Pengelolaan sarana dan prasarana secara optimal.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumentasi perbaikan fasilitas<br>2. Laporan pengelolaan sarana dan prasarana<br>3. Inventarisasi kondisi sarana dan prasarana</td>
+                            <td style="padding: 8px; vertical-align: top;">Sarana dan prasarana dikelola optimal melalui perawatan rutin dan pencatatan berkala. Fasilitas diperiksa untuk memastikan kelayakan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya kegiatan perawatan dan perbaikan fasilitas. Ruang kelas dan peralatan dalam kondisi baik dan siap pakai, sesuai laporan pengelolaan.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 9: Pengembangan Kurikulum</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kepemilikan kurikulum program pendidikan kesetaraan sebagai rujukan penyelenggaraan proses pembelajaran.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen kurikulum program pendidikan kesetaraan<br>2. Wawancara dengan kepala kurikulum<br>3. RPP atau modul ajar</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM telah memiliki dan menerapkan kurikulum program pendidikan kesetaraan sebagai pedoman utama untuk menyusun RPP, modul ajar, dan kegiatan belajar.</td>
+                            <td style="padding: 8px; vertical-align: top;">Pelaksanaan pembelajaran mengacu pada kurikulum. Dokumen kurikulum, RPP, dan modul ajar tersedia dan digunakan.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Adanya mekanisme evaluasi terhadap penerapan kurikulum.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen mekanisme evaluasi kurikulum<br>2. Notulen rapat evaluasi<br>3. Laporan hasil evaluasi penerapan kurikulum</td>
+                            <td style="padding: 8px; vertical-align: top;">Mekanisme evaluasi kurikulum dilakukan berkala melalui rapat dan supervisi untuk menilai efektivitas dan menyesuaikan materi dengan kebutuhan peserta didik.</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya pelaksanaan evaluasi (dibuktikan dengan notulen dan laporan). Hasil evaluasi digunakan untuk perbaikan proses belajar mengajar.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kurikulum program pendidikan kesetaraan relevan dengan kebutuhan belajar peserta didik, dan visi-misi program pendidikan kesetaraan di satuan pendidikan yang bersangkutan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi proses belajar mengajar di kelas<br>2. RPP atau modul ajar</td>
+                            <td style="padding: 8px; vertical-align: top;">Kurikulum dinilai relevan dengan kebutuhan peserta didik dan visi-misi PKBM. Pendidik memanfaatkan media digital (YouTube, Google Classroom, infokus).</td>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran mengintegrasikan berbagai media digital. Aktivitas belajar kontekstual dan sesuai karakteristik peserta didik, mencerminkan kurikulum yang adaptif.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 10: Iklim Kebinekaan</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Iklim lingkungan belajar membangun sikap positif terhadap keberagaman.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi penggunaan mushola<br>2. Dokumentasi kegiatan keagamaan dan keberagaman di kelas<br>3. Catatan aktivitas peserta didik yang menunjukkan toleransi</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM aktif menanamkan sikap saling menghormati dan bekerja sama tanpa membedakan latar belakang. Mushola digunakan bersama, menunjukkan toleransi tinggi.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik berinteraksi harmonis. Fasilitas (mushola) digunakan secara bergantian dan tertib, mencerminkan suasana inklusif dan menghargai perbedaan.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Iklim lingkungan belajar memfasilitasi hak sipil warga satuan pendidikan khususnya program pendidikan kesetaraan untuk beribadah dan berkegiatan secara setara.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi kegiatan ibadah dan pembelajaran<br>2. Dokumentasi fasilitas yang disediakan untuk semua peserta didik<br>3. Catatan kegiatan inklusif di kelas dan PKBM</td>
+                            <td style="padding: 8px; vertical-align: top;">Seluruh warga belajar diberikan kesempatan yang sama untuk beribadah dan berpartisipasi dalam kegiatan tanpa diskriminasi. Fasilitas dapat diakses secara adil.</td>
+                            <td style="padding: 8px; vertical-align: top;">Lingkungan belajar mendukung pelaksanaan kegiatan ibadah dan pembelajaran secara setara. Peserta didik memiliki kebebasan dan kenyamanan dalam menjalankan hak sipil masing-masing.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Iklim lingkungan belajar membangun kesadaran terhadap kesetaraan gender.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi kegiatan kelas dan pembelajaran<br>2. Dokumentasi peserta didik memimpin doa atau kegiatan secara setara</td>
+                            <td style="padding: 8px; vertical-align: top;">Pendidik memberikan perlakuan dan kesempatan yang sama kepada peserta didik laki-laki dan perempuan untuk berpartisipasi aktif (memimpin doa, diskusi, dll.).</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya partisipasi seimbang. Tidak ada diskriminasi peran, dan semua peserta didik percaya diri mengambil bagian.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 11: Lingkungan Belajar Inklusif</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kebijakan dan/atau prosedur yang menghadirkan lingkungan belajar yang inklusif.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen kebijakan dan prosedur inklusif<br>2. RPP atau modul ajar yang mendukung praktik inklusif<br>3. Observasi praktik pembelajaran inklusif di kelas</td>
+                            <td style="padding: 8px; vertical-align: top;">Lembaga memiliki kebijakan dan prosedur inklusif (penerimaan tanpa diskriminasi, RPP memperhatikan kebutuhan individu, dukungan bagi peserta didik dengan keterbatasan tertentu).</td>
+                            <td style="padding: 8px; vertical-align: top;">Pembelajaran berjalan inklusif. Peserta didik dari berbagai latar belakang berpartisipasi aktif. Pendidik menerapkan metode yang adaptif.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Tersedianya program bagi pendidik, orang tua/wali/ masyarakat, dan peserta didik untuk menghadirkan lingkungan belajar yang inklusif.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen program pelatihan dan sosialisasi inklusif<br>2. Notulen kegiatan partisipatif<br>3. Observasi partisipasi pendidik, orang tua, dan peserta didik dalam program inklusif</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM rutin menyelenggarakan sosialisasi dan pelatihan melibatkan semua pihak untuk meningkatkan pemahaman tentang inklusivitas dan kolaborasi.</td>
+                            <td style="padding: 8px; vertical-align: top;">Kegiatan pelatihan dan sosialisasi berjalan baik dan partisipatif. Semua pihak terlibat aktif, menunjukkan komitmen untuk lingkungan inklusif.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 12: Lingkungan Belajar Aman Secara Psikis</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kebijakan dalam pencegahan dan penanganan perundungan dan kekerasan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Verbal dari kepala sekolah mengenai kebijakan anti-bullying<br>2. Poster anti-bullying yang dipasang di lingkungan sekolah<br>3. Catatan observasi implementasi kebijakan</td>
+                            <td style="padding: 8px; vertical-align: top;">Lembaga memiliki kebijakan jelas dalam pencegahan dan penanganan perundungan/kekerasan, disampaikan melalui pertemuan rutin dan diperkuat media edukatif.</td>
+                            <td style="padding: 8px; vertical-align: top;">Lingkungan belajar aman dan kondusif. Terdapat poster anti-bullying. Peserta didik menunjukkan sikap saling menghargai.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Program bagi warga satuan pendidikan khususnya pada program pendidikan kesetaraan dalam pencegahan dan penanganan perundungan dan kekerasan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumentasi sosialisasi pencegahan bullying<br>2. Notulen kegiatan edukasi dan workshop terkait<br>3. Observasi partisipasi peserta didik dan pendidik dalam program</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM melaksanakan program (sosialisasi, pelatihan etika pergaulan, kegiatan edukatif) melibatkan semua pihak untuk mencegah perundungan.</td>
+                            <td style="padding: 8px; vertical-align: top;">Sosialisasi dan edukasi diikuti aktif. Peserta didik antusias dalam diskusi dan simulasi, menunjukkan kesadaran pentingnya lingkungan aman.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 13: Keselamatan Peserta Didik, Pendidik, dan Tenaga Kependidikan</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Iklim Lingkungan belajar yang menjaga keselamatan warga satuan Pendidikan khususnya pada program Pendidikan kesetaraan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Poster keselamatan di ruang kelas dan lingkungan sekolah<br>2. Verbal arahan kepala sekolah dan pendidik<br>3. Observasi praktik menjaga keselamatan di lingkungan belajar</td>
+                            <td style="padding: 8px; vertical-align: top;">Lembaga menerapkan kebijakan dan budaya yang menekankan keselamatan. Pendidik rutin memberikan arahan terkait keamanan dan tata tertib.</td>
+                            <td style="padding: 8px; vertical-align: top;">Lingkungan belajar tertata baik dan aman. Terdapat poster keselamatan. Pendidik aktif mengingatkan peserta didik menjaga keamanan diri dan fasilitas.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kesiapan dalam pemberian Pertolongan Pertama pada Kecelakaan (P3K).</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumentasi ruang dan alat P3K<br>2. Catatan prosedur P3K<br>3. Observasi latihan atau simulasi P3K</td>
+                            <td style="padding: 8px; vertical-align: top;">Tersedia ruang dan perlengkapan P3K memadai. Pendidik mengetahui prosedur dasar P3K dan berkoordinasi dengan Puskesmas terdekat.</td>
+                            <td style="padding: 8px; vertical-align: top;">Kotak dan perlengkapan P3K tersedia di ruang kelas dan kantor. Terdapat catatan prosedur P3K dan simulasi sederhana dilakukan berkala.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kesiapan satuan pendidikan khususnya program pendidikan kesetaraan dalam menghadapi ragam potensi bencana.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen prosedur tanggap darurat<br>2. Observasi latihan kesiapsiagaan dan simulasi bencana</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM memiliki prosedur tanggap darurat dan melaksanakan sosialisasi kesiapsiagaan bencana. Pendidik dan peserta didik mengetahui langkah penyelamatan diri.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik pernah mengikuti latihan simulasi bencana. Jalur evakuasi ditandai jelas, dan tersedia alat bantu sederhana (peluit, kotak darurat).</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 14: Lingkungan Sehat dan Program Kesehatan Fisik & Mental</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Iklim lingkungan belajar membangun pola hidup bersih dan sehat.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi aktivitas membersihkan kelas setelah belajar<br>2. Dokumentasi kegiatan kebersihan kelas<br>3. Catatan kegiatan harian peserta didik</td>
+                            <td style="padding: 8px; vertical-align: top;">Lembaga rutin mengajak peserta didik menjaga kebersihan lingkungan belajar setiap akhir sesi sebagai pembiasaan hidup bersih dan tanggung jawab.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik aktif menyapu, merapikan, dan menjaga kebersihan ruang belajar. Lingkungan kelas terawat dan bersih.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Program untuk membangun kesehatan mental pada peserta didik, pendidik, dan tenaga kependidikan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen program kesehatan mental<br>2. Catatan kegiatan pendampingan psikologis<br>3. Observasi partisipasi warga belajar dalam program kesehatan mental</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM memiliki program pendampingan dan sosialisasi fokus pada kesejahteraan mental (sesi berbagi pengalaman, kegiatan reflektif, motivasi).</td>
+                            <td style="padding: 8px; vertical-align: top;">Adanya kegiatan kelompok refleksi dan konseling sederhana. Peserta didik antusias dan merasa nyaman berbagi cerita.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Edukasi tentang pencegahan adiksi dan kesehatan reproduksi.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumen materi edukasi dan modul<br>2. Foto atau dokumentasi kegiatan penyuluhan<br>3. Observasi pelaksanaan edukasi di kelas</td>
+                            <td style="padding: 8px; vertical-align: top;">PKBM rutin memberikan edukasi bahaya adiksi dan pentingnya kesehatan reproduksi melalui penyuluhan, pemutaran video edukatif, dan diskusi interaktif.</td>
+                            <td style="padding: 8px; vertical-align: top;">Kegiatan penyuluhan berlangsung aktif dengan partisipasi peserta didik. Materi disampaikan sederhana dan mudah dipahami.</td>
+                        </tr>
+                        <tr class="butir-header" style="background-color: #d9edf7;">
+                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>Butir 15: Keterampilan Lulusan/Peserta Didik</strong></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Menunjukkan kemampuan menyampaikan gagasan.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi presentasi peserta didik<br>2. Catatan hasil diskusi kelompok<br>3. Dokumentasi video/audio penyampaian gagasan</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik mampu mengemukakan pendapat dan ide secara sistematis, dilatih berbicara di depan dengan bahasa yang sopan dan percaya diri.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik aktif menyampaikan gagasan saat diskusi kelompok/presentasi. Mampu menjelaskan ide dengan struktur jelas dan bahasa mudah dipahami.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Menghasilkan karya inovatif yang bermanfaat.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Dokumentasi produk karya peserta didik<br>2. Foto pameran atau hasil penjualan karya<br>3. Catatan kegiatan kewirausahaan atau proyek kreatif</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik menunjukkan kreativitas menghasilkan karya (kerajinan, produk kewirausahaan, desain) yang memiliki nilai guna.</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik mampu membuat produk inovatif (kerajinan, buket, desain) yang dipamerkan dan sebagian dijual saat pameran sekolah.</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px; vertical-align: top;">Kemandirian peserta didik/lulusan untuk berperan dalam kehidupan individu maupun bermasyarakat.</td>
+                            <td style="padding: 8px; vertical-align: top;">1. Observasi partisipasi peserta didik dalam kegiatan masyarakat<br>2. Dokumen tugas mandiri peserta didik<br>3. Catatan keterlibatan alumni atau warga belajar dalam program sosial</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik dilatih bertanggung jawab dan mandiri, serta terlibat dalam kegiatan sosial masyarakat (gotong royong, kegiatan desa).</td>
+                            <td style="padding: 8px; vertical-align: top;">Peserta didik mampu bekerja mandiri dalam tugas-tugasnya dan aktif dalam kegiatan masyarakat. Mereka menunjukkan inisiatif dan rasa tanggung jawab.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+
+            // 4. Gabungkan semua konten HTML untuk file Word
+            // Ini termasuk header, CSS untuk Word, data input, dan tabel
+            const htmlContent = `
+                <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+                <head>
+                    <meta charset='utf-8'>
+                    <title>Rekapitulasi Akreditasi</title>
+                    <style>
+                        /* CSS khusus untuk file Word */
+                        body {
+                            font-family: Arial, sans-serif;
+                            font-size: 10pt;
+                        }
+                        table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            border: 1px solid #000;
+                        }
+                        th, td {
+                            border: 1px solid #000;
+                            padding: 6px;
+                            vertical-align: top;
+                        }
+                        th {
+                            background-color: #f2f2f2;
+                            font-weight: bold;
+                            text-align: center;
+                        }
+                        .butir-header td {
+                            background-color: #d9edf7;
+                            font-weight: bold;
+                        }
+                        .header-info {
+                            font-size: 11pt;
+                            margin-bottom: 15px;
+                        }
+                        .header-info p {
+                            margin: 2px 0;
+                        }
+                        .header-info strong {
+                            width: 180px;
+                            display: inline-block;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2>
+                    
+                    <div class="header-info">
+                        <p><strong>Nama Asesor</strong>: ${namaAsesor}</p>
+                        <p><strong>NIA</strong>: ${nia}</p>
+                        <p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p>
+                        <p><strong>NPSN</strong>: ${npsn}</p>
+                    </div>
+                    
+                    <hr style="margin: 20px 0;">
+
+                    ${tableContent}
+
+                </body>
+                </html>
+            `;
+
+            // 5. Buat dan picu tautan unduhan
+            const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
+            const fileDownload = document.createElement("a");
+            document.body.appendChild(fileDownload);
+            fileDownload.href = source;
+            fileDownload.download = fileName;
+            fileDownload.click();
+            document.body.removeChild(fileDownload);
+        });
+    </script>
+
+</body>
+</html>
