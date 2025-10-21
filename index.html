@@ -521,6 +521,7 @@
         if(observasiContainer) observasiContainer.innerHTML = observasiHtml;
     }
 
+
     // --- FUNGSI TOGGLE VISIBILITY ---
     function toggleProgramVisibility() {
         const selectedPrograms = [];
@@ -653,11 +654,9 @@
                         let combinedObservasi = '';
 
                         selectedPrograms.forEach(prog => {
-                             // Correctly select the divs for the current row and program
                             const programDivBukti = row.cells[1].querySelector(`.program-input[data-program="${prog}"]`);
                             const programDivWawancara = row.cells[3].querySelector(`.program-input[data-program="${prog}"]`);
                             const programDivObservasi = row.cells[4].querySelector(`.program-input[data-program="${prog}"]`);
-
 
                             if (programDivBukti && programDivBukti.style.display !== 'none') {
                                 if (selectedPrograms.length > 1) combinedBukti += `<strong>Paket ${prog}:</strong>`;
@@ -713,22 +712,25 @@
 
             const finalScoreText = finalScoreEl ? finalScoreEl.innerText : '0.00';
             const finalGradeText = finalGradeEl ? finalGradeEl.innerText : 'TT';
-            const resultContainerVisible = resultContainerEl && resultContainerEl.style.display === 'block';
+            // Periksa style.display secara eksplisit
+            const resultContainerVisible = resultContainerEl && window.getComputedStyle(resultContainerEl).display === 'block';
 
             console.log("Export - Reading Score:", finalScoreText); // Debug Log
             console.log("Export - Reading Grade:", finalGradeText); // Debug Log
             console.log("Export - Is Result Visible:", resultContainerVisible); // Debug Log
 
             let finalResultHtml = '';
-            if (resultContainerVisible && (finalScoreText !== '0.00' || finalGradeText !== 'TT')) {
+            // Hanya tambahkan jika container visible DAN nilainya bukan default
+            if (resultContainerVisible && (finalScoreText !== '0.00' || finalGradeText !== 'TT') && parseFloat(finalScoreText) > 0) {
                 finalResultHtml = `<br><hr><h3 style="text-align: center;">Hasil Akhir Akreditasi</h3><div class="header-info" style="font-size: 12pt; text-align: center;"><p style="margin: 5px 0;"><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p><p style="margin: 5px 0;"><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p></div>`;
             } else {
                  console.log("Export - Skipping final result section because conditions not met."); // Debug Log
+                 finalResultHtml = ''; // Pastikan kosong jika kondisi tidak terpenuhi
             }
             // --- Akhir Revisi Pembacaan Nilai Akhir ---
 
             const wordFooter = `<br><br><p style="text-align: center; margin-top: 20px; font-style: italic; color: #555; font-size: 9pt;">www.kangruli.web.id</p>`;
-            const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><style>@page Section1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 20%; } table colgroup col:nth-child(2) { width: 25%; } table colgroup col:nth-child(3) { width: 27.5%; } table colgroup col:nth-child(4) { width: 27.5%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:20%"><col style="width:25%"><col style="width:27.5%"><col style="width:27.5%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
+            const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><style>@page Section1 { size: 21cm 29.7cm; /* A4 size */ margin: 1cm 1cm 1cm 1cm; /* Top Right Bottom Left 1cm */ mso-header-margin: 1.27cm; /* .5in */ mso-footer-margin: 1.27cm; /* .5in */ mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 20%; } table colgroup col:nth-child(2) { width: 25%; } table colgroup col:nth-child(3) { width: 27.5%; } table colgroup col:nth-child(4) { width: 27.5%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:20%"><col style="width:25%"><col style="width:27.5%"><col style="width:27.5%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
 
             const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
             const fileDownload = document.createElement("a");
