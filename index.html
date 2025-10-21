@@ -164,7 +164,7 @@
             font-weight: bold;
             font-size: 1.05rem;
         }
-        /* Penyesuaian lebar 5 kolom (approximate) */
+        /* Penyesuaian lebar 5 kolom (approximate) - UNTUK TAMPILAN WEB*/
         th:nth-child(1), td:nth-child(1) { width: 18%; }
         th:nth-child(2), td:nth-child(2) { width: 22%; }
         th:nth-child(3), td:nth-child(3) { width: 10%; } /* Level Kinerja */
@@ -268,7 +268,6 @@
         <h1>Rekapitulasi Akreditasi</h1>
         <h3 style="text-align: center; margin-top: 0; margin-bottom: 30px; font-weight: 500; color: #555;">Permudah rekap akreditasi dengan form ini. Mulai dari data awal.</h3>
 
-        <!-- Konten Utama Aplikasi (Awalnya Bisa Tersembunyi) -->
         <div id="mainAppContent">
             <div class="form-grid">
                 <div class="form-group">
@@ -306,7 +305,6 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- All 15 butir table rows go here... -->
                         <tr class="butir-header"><td colspan="5">Butir 1: Pendidik Menyediakan Dukungan Sosial Emosional</td></tr><tr class="data-row"><td>Interaksi yang setara dan saling menghargai.</td><td><div class="checkbox-item"><input type="checkbox" id="b1_1_1" value="RPP dan Kurikulum" checked><label for="b1_1_1">RPP dan Kurikulum</label></div><div class="checkbox-item"><input type="checkbox" id="b1_1_2" value="Observasi Kelas" checked><label for="b1_1_2">Observasi Kelas</label></div><div class="checkbox-item"><input type="checkbox" id="b1_1_3" value="Wawancara dengan perwakilan pendidik" checked><label for="b1_1_3">Wawancara dengan perwakilan pendidik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_1_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_1_4">Wawancara dengan minimal 5 peserta didik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_1_5" value="Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas" checked><label for="b1_1_5">Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas</label></div><div class="checkbox-item"><input type="checkbox" id="b1_1_6" value="Catatan anekdotal/Jurnal Pendidik" checked><label for="b1_1_6">Catatan anekdotal/Jurnal Pendidik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_1_7" value="Hasil survei kepuasan peserta didik" checked><label for="b1_1_7">Hasil survei kepuasan peserta didik</label></div></td><td><select class="level-kinerja"><option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option></select></td><td><textarea class="editable">Pendidik menunjukkan pemahaman mendalam tentang latar belakang unik setiap peserta didik dan secara konsisten proaktif menciptakan iklim inklusif. Peserta didik (termasuk yang minoritas/pendiam) mengonfirmasi merasa sangat dihargai, didengar, dan nyaman berekspresi tanpa takut dihakimi.</textarea></td><td><textarea class="editable">Terobservasi interaksi yang sangat cair, hangat, dan dua arah di dalam maupun di luar kelas. Pendidik mahir menggunakan bahasa positif, memvalidasi perasaan peserta didik, dan memberikan kesempatan setara. Tercipta 'psychological safety' yang tinggi di lingkungan belajar.</textarea></td></tr>
                         <tr class="data-row"><td>Interaksi yang membangun pola pikir bertumbuh.</td><td><div class="checkbox-item"><input type="checkbox" id="b1_2_1" value="RPP dan Kurikulum" checked><label for="b1_2_1">RPP dan Kurikulum</label></div><div class="checkbox-item"><input type="checkbox" id="b1_2_2" value="Observasi Kelas" checked><label for="b1_2_2">Observasi Kelas</label></div><div class="checkbox-item"><input type="checkbox" id="b1_2_3" value="Wawancara dengan perwakilan pendidik" checked><label for="b1_2_3">Wawancara dengan perwakilan pendidik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_2_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_2_4">Wawancara dengan minimal 5 peserta didik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_2_5" value="Observasi interaksi pendidik–peserta didik" checked><label for="b1_2_5">Observasi interaksi pendidik–peserta didik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_2_6" value="Contoh umpan balik tertulis (feedback)" checked><label for="b1_2_6">Contoh umpan balik tertulis (feedback)</label></div><div class="checkbox-item"><input type="checkbox" id="b1_2_7" value="Portofolio progres peserta didik" checked><label for="b1_2_7">Portofolio progres peserta didik</label></div></td><td><select class="level-kinerja"><option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option></select></td><td><textarea class="editable">Pendidik secara sistematis merancang KBM yang menantang namun aman. Pendidik terampil memberi umpan balik konstruktif yang fokus pada proses dan usaha. Peserta didik menyatakan termotivasi oleh kegagalan, memandangnya sebagai bagian dari proses belajar, dan berani mencoba lagi.</textarea></td><td><textarea class="editable">Pendidik secara konsisten memberikan 'growth mindset praise' (apresiasi pada proses, strategi, dan kegigihan, bukan hanya hasil akhir/kecerdasan). Peserta didik terlihat antusias mencoba tantangan baru, tidak takut salah, dan saling mendukung proses belajar temannya.</textarea></td></tr>
                         <tr class="data-row"><td>Memberi perhatian dan bantuan pada peserta didik yang membutuhkan dukungan lebih/ekstra.</td><td><div class="checkbox-item"><input type="checkbox" id="b1_3_1" value="RPP dan Kurikulum (misal: diferensiasi)" checked><label for="b1_3_1">RPP dan Kurikulum (misal: diferensiasi)</label></div><div class="checkbox-item"><input type="checkbox" id="b1_3_2" value="Observasi Kelas" checked><label for="b1_3_2">Observasi Kelas</label></div><div class="checkbox-item"><input type="checkbox" id="b1_3_3" value="Wawancara dengan perwakilan pendidik" checked><label for="b1_3_3">Wawancara dengan perwakilan pendidik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_3_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_3_4">Wawancara dengan minimal 5 peserta didik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_3_5" value="Observasi interaksi pendidik–peserta didik" checked><label for="b1_3_5">Observasi interaksi pendidik–peserta didik</label></div><div class="checkbox-item"><input type="checkbox" id="b1_3_6" value="Catatan/Program bimbingan khusus" checked><label for="b1_3_6">Catatan/Program bimbingan khusus</label></div><div class="checkbox-item"><input type="checkbox" id="b1_3_7" value="Portofolio kemajuan peserta didik" checked><label for="b1_3_7">Portofolio kemajuan peserta didik</label></div></td><td><select class="level-kinerja"><option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option></select></td><td><textarea class="editable">Pendidik memiliki data/peta kebutuhan peserta didik yang rinci dan proaktif menawarkan bantuan sebelum diminta. Peserta didik (yang membutuhkan dukungan) merasa sangat dipahami, didukung, dan tidak merasa terstigma. Ada program bimbingan individual yang terstruktur.</textarea></td><td><textarea class="editable">Terobservasi pendidik melakukan pendampingan individual secara intensif namun tetap inklusif (tidak mengganggu KBM). Ada 'peer tutoring' (tutor sebaya) yang terstruktur dan difasilitasi pendidik. Peserta didik lain menunjukkan empati dan proaktif membantu temannya.</textarea></td></tr>
@@ -355,7 +353,6 @@
                         <tr class="butir-header"><td colspan="5">Butir 15: Keterampilan Lulusan/Peserta Didik</td></tr><tr class="data-row"><td>Menunjukkan kemampuan menyampaikan gagasan.</td><td><div class="checkbox-item"><input type="checkbox" id="b15_1_1" value="Observasi presentasi/diskusi peserta didik" checked><label for="b15_1_1">Observasi presentasi/diskusi peserta didik</label></div><div class="checkbox-item"><input type="checkbox" id="b15_1_2" value="Catatan hasil diskusi kelompok" checked><label for="b15_1_2">Catatan hasil diskusi kelompok</label></div><div class="checkbox-item"><input type="checkbox" id="b15_1_3" value="Dokumentasi video/audio penyampaian gagasan" checked><label for="b15_1_3">Dokumentasi video/audio penyampaian gagasan</label></div><div class="checkbox-item"><input type="checkbox" id="b15_1_4" value="Rubrik penilaian presentasi/diskusi" checked><label for="b15_1_4">Rubrik penilaian presentasi/diskusi</label></div></td><td><select class="level-kinerja"><option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option></select></td><td><textarea class="editable">Peserta didik sangat terampil mengemukakan pendapat dan ide secara sistematis, kritis, dan logis. Mereka dilatih secara konsisten untuk berbicara di depan umum (presentasi, diskusi) dengan bahasa yang santun, lugas, dan percaya diri.</textarea></td><td><textarea class="editable">Terobservasi peserta didik sangat aktif dan mahir menyampaikan gagasan saat diskusi/presentasi. Mereka mampu menjelaskan ide kompleks dengan struktur jelas, menggunakan data pendukung, dan merespons pertanyaan/sanggahan dengan baik.</textarea></td></tr>
                         <tr class="data-row"><td>Menghasilkan karya inovatif yang bermanfaat.</td><td><div class="checkbox-item"><input type="checkbox" id="b15_2_1" value="Dokumentasi produk/karya inovatif siswa" checked><label for="b15_2_1">Dokumentasi produk/karya inovatif siswa</label></div><div class="checkbox-item"><input type="checkbox" id="b15_2_2" value="Foto/Video pameran/penjualan karya" checked><label for="b15_2_2">Foto/Video pameran/penjualan karya</label></div><div class="checkbox-item"><input type="checkbox" id="b15_2_3" value="Catatan kegiatan kewirausahaan/proyek kreatif (PjBL)" checked><label for="b15_2_3">Catatan kegiatan kewirausahaan/proyek kreatif (PjBL)</label></div><div class="checkbox-item"><input type="checkbox" id="b15_2_4" value="Sertifikat/Piagam lomba karya/inovasi" checked><label for="b15_2_4">Sertifikat/Piagam lomba karya/inovasi</label></div></td><td><select class="level-kinerja"><option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option></select></td><td><textarea class="editable">Peserta didik menunjukkan kreativitas dan inovasi yang tinggi, menghasilkan beragam karya (kerajinan, produk vokasi, desain, konten digital) yang orisinal dan memiliki nilai guna/jual. Lembaga sangat memfasilitasi (sarana, pameran, jejaring).</textarea></td><td><textarea class="editable">Terobservasi beragam produk inovatif hasil karya peserta didik (misal: desain kaos, produk kuliner, aplikasi sederhana). Karya-karya tersebut dipamerkan secara profesional dan sebagian telah laku dijual atau memenangkan kompetisi. Keterampilan vokasi sangat kuat.</textarea></td></tr>
                         <tr class="data-row"><td>Kemandirian peserta didik/lulusan untuk berperan dalam kehidupan individu maupun bermasyarakat.</td><td><div class="checkbox-item"><input type="checkbox" id="b15_3_1" value="Observasi partisipasi (kegiatan masyarakat/magang)" checked><label for="b15_3_1">Observasi partisipasi (kegiatan masyarakat/magang)</label></div><div class="checkbox-item"><input type="checkbox" id="b15_3_2" value="Dokumen tugas mandiri (portofolio, proyek)" checked><label for="b15_3_2">Dokumen tugas mandiri (portofolio, proyek)</label></div><div class="checkbox-item"><input type="checkbox" id="b15_3_3" value="Catatan/Testimoni keterlibatan alumni/warga belajar" checked><label for="b15_3_3">Catatan/Testimoni keterlibatan alumni/warga belajar</label></div><div class="checkbox-item"><input type="checkbox" id="b15_3_4" value="Tracer study lulusan (jika ada)" checked><label for="b15_3_4">Tracer study lulusan (jika ada)</label></div></td><td><select class="level-kinerja"><option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option></select></td><td><textarea class="editable">Peserta didik/lulusan terbukti sangat mandiri, bertanggung jawab, dan memiliki inisiatif tinggi. Mereka tidak hanya fokus pada akademik, tetapi terlibat aktif dalam kegiatan sosial masyarakat (gotong royong, karang taruna) atau dunia kerja (magang/wirausaha).</textarea></td><td><textarea class="editable">Peserta didik mampu bekerja mandiri dalam tugas-tugas kompleks tanpa supervisi ketat. Mereka menunjukkan inisiatif tinggi, rasa tanggung jawab sosial, dan keterampilan adaptasi yang sangat baik di lingkungan belajar maupun di luar (masyarakat/magang).</textarea></td></tr>
-
                     </tbody>
                 </table>
             </div>
@@ -381,7 +378,6 @@
             </div>
         </div>
 
-        <!-- Pesan Limit (Awalnya Tersembunyi) -->
         <div id="limitMessage" style="display: none; padding: 20px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 8px; color: #721c24; text-align: center; margin-top: 25px;">
             <h3>Akses Terbatas</h3>
             <p>Anda telah menggunakan jatah gratis 1 kali untuk aplikasi ini di browser ini. Untuk penggunaan tanpa batas, silakan berikan donasi sukarela untuk mendukung pengembangan.</p>
@@ -389,7 +385,6 @@
             <p>Setelah berdonasi dan konfirmasi, Anda akan mendapatkan kode unlock untuk dimasukkan di bawah ini.</p>
         </div>
 
-        <!-- Bagian Unlock (Awalnya Tersembunyi) -->
         <div id="unlockSection" style="display: none; margin-top: 20px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
             <h4 style="margin-top: 0; text-align: center;">Masukkan Kode Unlock</h4>
             <div style="display: flex; gap: 10px; justify-content: center;">
@@ -408,6 +403,9 @@
             document.getElementById('mainAppContent').style.display = 'block';
             document.getElementById('limitMessage').style.display = 'none';
             document.getElementById('unlockSection').style.display = 'none';
+
+            // Mengaktifkan kembali listener tombol hitung dan ekspor HANYA jika aplikasi berjalan
+            attachActionListeners();
         }
 
         function tampilkanPesanLimit() {
@@ -423,7 +421,7 @@
             if (kodeInput.trim() === KODE_UNLOCK_RAHASIA) {
                 localStorage.setItem('hasDonatedKangRuliApp', 'true');
                 alert('Terima kasih atas donasi Anda! Aplikasi kini dapat digunakan tanpa batas.');
-                location.reload(); // Muat ulang halaman untuk mengaktifkan
+                location.reload(); 
             } else {
                 alert('Kode unlock salah. Silakan coba lagi atau lakukan donasi terlebih dahulu.');
             }
@@ -436,7 +434,7 @@
             if (sudahDonasi === 'true') {
                 jalankanFungsiIntiAplikasi();
                 const donationNoticeEl = document.querySelector('.donation-notice');
-                if(donationNoticeEl) donationNoticeEl.style.display = 'none';
+                if(donationNoticeEl) donationNoticeEl.style.display = 'none'; 
             } else if (sudahPernahPakai === 'true') {
                 tampilkanPesanLimit();
             } else {
@@ -445,105 +443,122 @@
             }
         });
 
+        // --- FUNGSI PERHITUNGAN DAN EKSPOR (dipisahkan agar bisa dipanggil setelah unlock) ---
+        function attachActionListeners() {
+            document.getElementById('calculateButton').addEventListener('click', function() {
+                const levels = document.querySelectorAll('select.level-kinerja');
+                let totalScore = 0;
+                let count = 0;
 
-        // --- FUNGSI PERHITUNGAN DAN EKSPOR ---
+                levels.forEach(select => {
+                    totalScore += parseFloat(select.value);
+                    count++;
+                });
 
-        document.getElementById('calculateButton').addEventListener('click', function() {
-            const levels = document.querySelectorAll('select.level-kinerja');
-            let totalScore = 0;
-            let count = 0;
+                const averageScore = totalScore / count;
+                let grade = 'TT';
+                let gradeColor = '#d9534f'; 
 
-            levels.forEach(select => {
-                totalScore += parseFloat(select.value);
-                count++;
-            });
-
-            const averageScore = totalScore / count;
-            let grade = 'TT';
-            let gradeColor = '#d9534f'; 
-
-            if (averageScore > 3.5) {
-                grade = 'A';
-                gradeColor = '#28a745';
-            } else if (averageScore > 2.5) {
-                grade = 'B';
-                gradeColor = '#007bff';
-            } else if (averageScore > 1.5) {
-                grade = 'C';
-                gradeColor = '#fd7e14';
-            }
-
-            const finalScoreEl = document.getElementById('finalScore');
-            const finalGradeEl = document.getElementById('finalGrade');
-            const resultContainerEl = document.getElementById('resultContainer');
-
-            finalScoreEl.innerText = averageScore.toFixed(2);
-            finalGradeEl.innerText = grade;
-            finalGradeEl.style.color = gradeColor;
-            
-            resultContainerEl.style.display = 'block';
-        });
-
-        document.getElementById('exportButton').addEventListener('click', function() {
-            const namaAsesor = document.getElementById('namaAsesor').value;
-            const nia = document.getElementById('nia').value;
-            const namaSatuan = document.getElementById('namaSatuan').value;
-            const npsn = document.getElementById('npsn').value;
-            
-            const fileName = `Rekapitulasi_Akreditasi_${namaSatuan.replace(/\s+/g, '_') || 'PKBM'}.doc`;
-
-            let tableContent = `<table border="1" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 10pt;"><thead style="background-color: #f2f2f2;"><tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;"><th style="padding: 8px; width: 20%;">Indikator</th><th style="padding: 8px; width: 20%;">Bukti/Dokumentasi yang digunakan sebagai bukti</th><th style="padding: 8px; width: 10%;">Level Kinerja</th><th style="padding: 8px; width: 25%;">Rekap Hasil Wawancara</th><th style="padding: 8px; width: 25%;">Rekap Hasil Observasi</th></tr></thead><tbody>`;
-
-            const rows = document.querySelectorAll('#rekapTable tbody tr');
-            
-            rows.forEach(row => {
-                if (row.classList.contains('butir-header')) {
-                    tableContent += `<tr class="butir-header" style="background-color: #d9edf7;"><td colspan="5" style="padding: 8px; font-weight: bold;"><strong>${row.cells[0].innerText}</strong></td></tr>`;
-                } else if (row.classList.contains('data-row')) {
-                    const indikator = row.cells[0].innerHTML;
-                    
-                    let buktiList = '<ol style="margin: 0; padding-left: 20px;">';
-                    const checkedBukti = row.cells[1].querySelectorAll('input[type="checkbox"]:checked');
-                    if (checkedBukti.length > 0) {
-                        checkedBukti.forEach(cb => {
-                            buktiList += `<li>${cb.value}</li>`;
-                        });
-                    } else {
-                        buktiList += '<li>- (Tidak ada bukti dipilih) -</li>';
-                    }
-                    buktiList += '</ol>';
-
-                    const levelSelect = row.cells[2].querySelector('select.level-kinerja');
-                    const levelKinerja = levelSelect.options[levelSelect.selectedIndex].text;
-                    const wawancara = row.cells[3].querySelector('textarea').value.replace(/\n/g, '<br>');
-                    const observasi = row.cells[4].querySelector('textarea').value.replace(/\n/g, '<br>');
-
-                    tableContent += `<tr><td style="padding: 8px; vertical-align: top;">${indikator}</td><td style="padding: 8px; vertical-align: top;">${buktiList}</td><td style="padding: 8px; vertical-align: top; font-weight: bold;">${levelKinerja}</td><td style="padding: 8px; vertical-align: top;">${wawancara}</td><td style="padding: 8px; vertical-align: top;">${observasi}</td></tr>`;
+                if (averageScore > 3.5) {
+                    grade = 'A';
+                    gradeColor = '#28a745';
+                } else if (averageScore > 2.5) {
+                    grade = 'B';
+                    gradeColor = '#007bff';
+                } else if (averageScore > 1.5) {
+                    grade = 'C';
+                    gradeColor = '#fd7e14';
                 }
+
+                const finalScoreEl = document.getElementById('finalScore');
+                const finalGradeEl = document.getElementById('finalGrade');
+                const resultContainerEl = document.getElementById('resultContainer');
+
+                finalScoreEl.innerText = averageScore.toFixed(2);
+                finalGradeEl.innerText = grade;
+                finalGradeEl.style.color = gradeColor;
+                
+                resultContainerEl.style.display = 'block';
             });
-            tableContent += '</tbody></table>';
 
-            const finalScoreText = document.getElementById('finalScore').innerText;
-            const finalGradeText = document.getElementById('finalGrade').innerText;
-            const resultContainerVisible = document.getElementById('resultContainer').style.display;
-            
-            let finalResultHtml = '';
-            if (resultContainerVisible !== 'none') {
-                finalResultHtml = `<br><hr><h3 style="text-align: center;">Hasil Akhir Akreditasi</h3><div class="header-info" style="font-size: 12pt; text-align: center;"><p style="margin: 5px 0;"><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p><p style="margin: 5px 0;"><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p></div>`;
-            }
-            
-            const wordFooter = `<br><br><p style="text-align: center; margin-top: 20px; font-style: italic; color: #555; font-size: 9pt;">www.kangruli.web.id</p>`;
+            document.getElementById('exportButton').addEventListener('click', function() {
+                const namaAsesor = document.getElementById('namaAsesor').value;
+                const nia = document.getElementById('nia').value;
+                const namaSatuan = document.getElementById('namaSatuan').value;
+                const npsn = document.getElementById('npsn').value;
+                
+                const fileName = `Rekapitulasi_Akreditasi_${namaSatuan.replace(/\s+/g, '_') || 'PKBM'}.doc`;
 
-            const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>90</w:Zoom><w:DoNotOptimizeForBrowser/></w:WordDocument></xml><![endif]--><style>@page Section1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 18%; } table colgroup col:nth-child(2) { width: 22%; } table colgroup col:nth-child(3) { width: 10%; } table colgroup col:nth-child(4) { width: 25%; } table colgroup col:nth-child(5) { width: 25%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:18%"><col style="width:22%"><col style="width:10%"><col style="width:25%"><col style="width:25%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
+                // --- MODIFIKASI DIMULAI DARI SINI UNTUK EKSPOR ---
+                let tableContent = `
+                    <table border="1" style="border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 10pt;">
+                        <thead style="background-color: #f2f2f2;">
+                            <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;">
+                                <th style="padding: 8px; width: 20%;">Indikator</th>
+                                <th style="padding: 8px; width: 20%;">Bukti/Dokumentasi yang digunakan sebagai bukti</th>
+                                {/* KOLOM LEVEL KINERJA DIHILANGKAN DARI HEADER WORD */}
+                                <th style="padding: 8px; width: 30%;">Rekap Hasil Wawancara</th>
+                                <th style="padding: 8px; width: 30%;">Rekap Hasil Observasi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
 
-            const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
-            const fileDownload = document.createElement("a");
-            document.body.appendChild(fileDownload);
-            fileDownload.href = source;
-            fileDownload.download = fileName;
-            fileDownload.click();
-            document.body.removeChild(fileDownload);
-        });
+                const rows = document.querySelectorAll('#rekapTable tbody tr');
+                
+                rows.forEach(row => {
+                    if (row.classList.contains('butir-header')) {
+                        // Colspan diubah menjadi 4 karena 1 kolom dihilangkan
+                        tableContent += `<tr class="butir-header" style="background-color: #d9edf7;"><td colspan="4" style="padding: 8px; font-weight: bold;"><strong>${row.cells[0].innerText}</strong></td></tr>`;
+                    } else if (row.classList.contains('data-row')) {
+                        const indikator = row.cells[0].innerHTML;
+                        
+                        let buktiList = '<ol style="margin: 0; padding-left: 20px;">';
+                        const checkedBukti = row.cells[1].querySelectorAll('input[type="checkbox"]:checked');
+                        if (checkedBukti.length > 0) {
+                            checkedBukti.forEach(cb => {
+                                buktiList += `<li>${cb.value}</li>`;
+                            });
+                        } else {
+                            buktiList += '<li>- (Tidak ada bukti dipilih) -</li>';
+                        }
+                        buktiList += '</ol>';
+
+                        // Ambil data wawancara dan observasi dari sel yang benar (index 3 dan 4)
+                        const wawancara = row.cells[3].querySelector('textarea').value.replace(/\n/g, '<br>');
+                        const observasi = row.cells[4].querySelector('textarea').value.replace(/\n/g, '<br>');
+
+                        // Buat baris tanpa kolom Level Kinerja
+                        tableContent += `<tr><td style="padding: 8px; vertical-align: top;">${indikator}</td><td style="padding: 8px; vertical-align: top;">${buktiList}</td><td style="padding: 8px; vertical-align: top;">${wawancara}</td><td style="padding: 8px; vertical-align: top;">${observasi}</td></tr>`;
+                    }
+                });
+                tableContent += '</tbody></table>';
+                // --- MODIFIKASI EKSPOR SELESAI ---
+
+
+                const finalScoreText = document.getElementById('finalScore').innerText;
+                const finalGradeText = document.getElementById('finalGrade').innerText;
+                const resultContainerVisible = document.getElementById('resultContainer').style.display;
+                
+                let finalResultHtml = '';
+                if (resultContainerVisible !== 'none') {
+                    finalResultHtml = `<br><hr><h3 style="text-align: center;">Hasil Akhir Akreditasi</h3><div class="header-info" style="font-size: 12pt; text-align: center;"><p style="margin: 5px 0;"><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p><p style="margin: 5px 0;"><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p></div>`;
+                }
+                
+                const wordFooter = `<br><br><p style="text-align: center; margin-top: 20px; font-style: italic; color: #555; font-size: 9pt;">www.kangruli.web.id</p>`;
+
+                const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><style>@page Section1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 20%; } table colgroup col:nth-child(2) { width: 20%; } table colgroup col:nth-child(3) { width: 30%; } table colgroup col:nth-child(4) { width: 30%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:20%"><col style="width:20%"><col style="width:30%"><col style="width:30%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
+
+                const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
+                const fileDownload = document.createElement("a");
+                document.body.appendChild(fileDownload);
+                fileDownload.href = source;
+                fileDownload.download = fileName;
+                fileDownload.click();
+                document.body.removeChild(fileDownload);
+            });
+        }
+
     </script>
 
 </body>
