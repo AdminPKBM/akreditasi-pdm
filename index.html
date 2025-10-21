@@ -14,7 +14,7 @@
             color: #333;
         }
         .container {
-            max-width: 1200px; /* Lebih lebar untuk tabel */
+            max-width: 1400px; /* Lebih lebar untuk 5 kolom */
             margin: 20px auto;
             padding: 30px;
             background-color: #ffffff;
@@ -52,14 +52,21 @@
             padding: 12px;
             border: 1px solid #ccc;
             border-radius: 6px;
-            box-sizing: border-box; /* Memastikan padding tidak menambah lebar */
+            box-sizing: border-box; 
             font-size: 1rem;
         }
-        .export-button {
+        
+        .button-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .export-button, .calculate-button {
             display: block;
             width: 100%;
             padding: 15px;
-            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 6px;
@@ -67,15 +74,46 @@
             font-weight: bold;
             cursor: pointer;
             transition: background-color 0.3s ease;
-            margin-top: 20px;
+        }
+        .export-button {
+            background-color: #007bff;
         }
         .export-button:hover {
             background-color: #0056b3;
         }
-        
+        .calculate-button {
+            background-color: #28a745;
+        }
+        .calculate-button:hover {
+            background-color: #218838;
+        }
+
+        /* Hasil Akhir */
+        .result-container {
+            display: none; /* Sembunyi by default */
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e6f7ff;
+            border: 1px solid #b3e0ff;
+            border-radius: 8px;
+        }
+        .result-container h3 {
+            margin-top: 0;
+            color: #005a9c;
+        }
+        .result-container p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        #finalGrade {
+            font-weight: bold;
+            color: #d9534f;
+        }
+
         /* Styling untuk Tabel Interaktif */
         .table-container {
             margin-top: 30px;
+            overflow-x: auto; /* Memastikan tabel bisa discroll di layar kecil */
         }
         table {
             width: 100%;
@@ -91,16 +129,20 @@
         th {
             background-color: #f2f2f2;
             font-weight: bold;
+            position: sticky;
+            top: 0;
         }
         tr.butir-header td {
             background-color: #d9edf7;
             font-weight: bold;
             font-size: 1.1rem;
         }
+        /* Penyesuaian lebar 5 kolom */
         td:nth-child(1) { width: 20%; }
         td:nth-child(2) { width: 20%; }
-        td:nth-child(3) { width: 30%; }
-        td:nth-child(4) { width: 30%; }
+        td:nth-child(3) { width: 10%; } /* Level Kinerja */
+        td:nth-child(4) { width: 25%; }
+        td:nth-child(5) { width: 25%; }
 
         .checkbox-item {
             display: block;
@@ -122,13 +164,21 @@
             font-family: inherit;
             font-size: 0.9rem;
         }
+        select.level-kinerja {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <h1>Formulir Rekapitulasi Akreditasi</h1>
-        <p style="text-align: center; margin-top: -10px; margin-bottom: 30px;">Isi data asesor, centang bukti yang ada, dan edit rekapitulasi sesuai temuan.</p>
+        <p style="text-align: center; margin-top: -10px; margin-bottom: 30px;">Isi data asesor, centang bukti, pilih level kinerja, dan edit rekapitulasi sesuai temuan.</p>
 
         <div class="form-grid">
             <div class="form-group">
@@ -160,13 +210,14 @@
                     <tr>
                         <th>Indikator</th>
                         <th>Bukti/Dokumentasi (Pilih yang ada)</th>
+                        <th>Level Kinerja</th>
                         <th>Rekap Hasil Wawancara (Editable)</th>
                         <th>Rekap Hasil Observasi (Editable)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="butir-header">
-                        <td colspan="4">Butir 1: Pendidik Menyediakan Dukungan Sosial Emosional</td>
+                        <td colspan="5">Butir 1: Pendidik Menyediakan Dukungan Sosial Emosional</td>
                     </tr>
                     <tr class="data-row">
                         <td>Interaksi yang setara dan saling menghargai.</td>
@@ -176,6 +227,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b1_1_3" value="Wawancara dengan perwakilan pendidik" checked><label for="b1_1_3">Wawancara dengan perwakilan pendidik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b1_1_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_1_4">Wawancara dengan minimal 5 peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b1_1_5" value="Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas" checked><label for="b1_1_5">Observasi interaksi pendidik–peserta didik di dalam dan di luar kelas</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Pendidik memahami latar belakang dan karakteristik peserta didik. Pendidik terbuka dalam berkomunikasi, memberikan motivasi, dan menciptakan suasana kelas yang nyaman, menerapkan prinsip kesetaraan dan empati.</textarea></td>
                         <td><textarea class="editable">Pendidik aktif menjalin komunikasi dua arah dengan pendekatan ramah dan inklusif, memberi kesempatan berpendapat, dan menyesuaikan metode. Lingkungan belajar kondusif.</textarea></td>
@@ -189,6 +248,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b1_2_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_2_4">Wawancara dengan minimal 5 peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b1_2_5" value="Observasi interaksi pendidik–peserta didik" checked><label for="b1_2_5">Observasi interaksi pendidik–peserta didik</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pendidik menciptakan suasana belajar yang aman dan menyenangkan, melibatkan peserta didik dalam penyusunan peraturan kelas, memberi umpan balik positif, dan mendorong peserta didik untuk berpikir terbuka.</textarea></td>
                         <td><textarea class="editable">Pendidik aktif membangun interaksi positif dengan komunikasi dua arah. Pendidik memberi penguatan dan apresiasi, serta menyesuaikan pendekatan pembelajaran untuk pertumbuhan.</textarea></td>
                     </tr>
@@ -200,6 +267,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b1_3_3" value="Wawancara dengan perwakilan pendidik" checked><label for="b1_3_3">Wawancara dengan perwakilan pendidik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b1_3_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_3_4">Wawancara dengan minimal 5 peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b1_3_5" value="Observasi interaksi pendidik–peserta didik" checked><label for="b1_3_5">Observasi interaksi pendidik–peserta didik</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Pendidik aktif memberikan perhatian khusus kepada yang kesulitan belajar, sabar membimbing, dan mendorong peserta didik lain untuk saling membantu. Peserta didik merasa nyaman.</textarea></td>
                         <td><textarea class="editable">Pendidik tanggap terhadap kebutuhan belajar, memberikan bimbingan langsung, dan mengarahkan teman sebaya untuk membantu. Interaksi hangat dan iklim belajar inklusif.</textarea></td>
@@ -213,12 +288,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b1_4_4" value="Wawancara dengan minimal 5 peserta didik" checked><label for="b1_4_4">Wawancara dengan minimal 5 peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b1_4_5" value="Observasi interaksi pendidik–peserta didik" checked><label for="b1_4_5">Observasi interaksi pendidik–peserta didik</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pendidik memiliki perhatian tinggi terhadap keberagaman, membimbing yang kesulitan dengan sabar, dan mendorong gotong royong. Peserta didik merasa dihargai dan termotivasi.</textarea></td>
                         <td><textarea class="editable">Pendidik menciptakan suasana kelas positif dan penuh kepedulian, memberi bimbingan langsung, dan mengajak teman sekelas untuk membantu. Komunikasi hangat dan kolaboratif.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 2: Pendidik Mengelola Kelas</td>
+                        <td colspan="5">Butir 2: Pendidik Mengelola Kelas</td>
                     </tr>
                     <tr class="data-row">
                         <td>Kesepakatan kelas/kelompok yang disusun secara partisipatif.</td>
@@ -229,6 +312,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b2_1_4" value="Dokumentasi kegiatan observasi" checked><label for="b2_1_4">Dokumentasi kegiatan observasi</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b2_1_5" value="Wawancara dengan pendidik dan warga belajar" checked><label for="b2_1_5">Wawancara dengan pendidik dan warga belajar</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Kesepakatan kelas disusun melalui musyawarah bersama. Keterlibatan warga belajar menumbuhkan rasa tanggung jawab dan meningkatkan kedisiplinan.</textarea></td>
                         <td><textarea class="editable">Adanya penerapan tata tertib dan jadwal piket yang tertib. Warga belajar melaksanakan tugas. Suasana belajar kondusif.</textarea></td>
                     </tr>
@@ -238,6 +329,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b2_2_1" value="Poster kedisiplinan" checked><label for="b2_2_1">Poster kedisiplinan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b2_2_2" value="Dokumentasi kegiatan observasi" checked><label for="b2_2_2">Dokumentasi kegiatan observasi</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b2_2_3" value="Wawancara dengan pendidik dan warga belajar" checked><label for="b2_2_3">Wawancara dengan pendidik dan warga belajar</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Pendidik menerapkan disiplin dengan pendekatan positif dan humanis (teguran santun). Warga belajar merasa dihargai dan termotivasi untuk memperbaiki sikap.</textarea></td>
                         <td><textarea class="editable">Pendidik menegakkan disiplin secara konsisten namun tetap hangat. Warga belajar mengikuti aturan dengan tertib.</textarea></td>
@@ -250,18 +349,34 @@
                             <div class="checkbox-item"><input type="checkbox" id="b2_3_3" value="RPP" checked><label for="b2_3_3">RPP</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b2_3_4" value="Dokumen kurikulum" checked><label for="b2_3_4">Dokumen kurikulum</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pendidik mampu menciptakan suasana belajar yang terarah dan menarik dengan metode variatif. Pendidik aktif mengatur jalannya kegiatan agar semua peserta tetap fokus.</textarea></td>
                         <td><textarea class="editable">Pendidik mengelola kegiatan sesuai perencanaan, mengatur waktu efektif, dan menyesuaikan strategi. Peserta didik terlihat fokus, aktif berdiskusi, dan terlibat.</textarea></td>
                     </tr>
                     
                     <tr class="butir-header">
-                        <td colspan="4">Butir 3: Pendidik Mengelola Proses Pembelajaran</td>
+                        <td colspan="5">Butir 3: Pendidik Mengelola Proses Pembelajaran</td>
                     </tr>
                     <tr class="data-row">
                         <td>Perencanaan yang memadai untuk mendukung pelaksanaan pembelajaran.</td>
                         <td>
                             <div class="checkbox-item"><input type="checkbox" id="b3_1_1" value="RPP atau Modul Ajar" checked><label for="b3_1_1">RPP atau Modul Ajar</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b3_1_2" value="Dokumen perencanaan pembelajaran tahunan atau mingguan" checked><label for="b3_1_2">Dokumen perencanaan pembelajaran tahunan atau mingguan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Perencanaan sistematis melalui penyusunan RPP/modul ajar yang disesuaikan dengan karakteristik warga belajar. Tujuan, metode, dan asesmen disusun jelas.</textarea></td>
                         <td><textarea class="editable">Kegiatan pembelajaran berjalan sesuai perencanaan. Pendidik menggunakan perangkat ajar dengan baik, mengelola waktu efektif, dan menyesuaikan strategi.</textarea></td>
@@ -273,6 +388,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b3_2_2" value="Catatan umpan balik pendidik" checked><label for="b3_2_2">Catatan umpan balik pendidik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b3_2_3" value="Observasi interaksi pendidik–peserta didik saat memberi feedback" checked><label for="b3_2_3">Observasi interaksi pendidik–peserta didik saat memberi feedback</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pendidik rutin melaksanakan penilaian formatif, memberikan umpan balik langsung berupa saran perbaikan, apresiasi, dan dorongan.</textarea></td>
                         <td><textarea class="editable">Pendidik aktif memberikan umpan balik. Hasil penilaian formatif digunakan untuk menyesuaikan pendekatan dan memperkuat pemahaman.</textarea></td>
                     </tr>
@@ -282,6 +405,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b3_3_1" value="Soal ulangan, proyek, atau tugas akhir" checked><label for="b3_3_1">Soal ulangan, proyek, atau tugas akhir</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b3_3_2" value="Instrumen penilaian sumatif" checked><label for="b3_3_2">Instrumen penilaian sumatif</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b3_3_3" value="Dokumentasi pelaksanaan penilaian" checked><label for="b3_3_3">Dokumentasi pelaksanaan penilaian</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Penilaian sumatif menggunakan berbagai metode (ujian tertulis, proyek, presentasi) dan disesuaikan dengan capaian pembelajaran agar hasilnya objektif dan komprehensif.</textarea></td>
                         <td><textarea class="editable">Pelaksanaan penilaian sumatif tertib dan sesuai instrumen. Peserta didik memahami bentuk penilaian dan berpartisipasi serius.</textarea></td>
@@ -293,6 +424,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b3_4_2" value="Catatan tindak lanjut pembelajaran" checked><label for="b3_4_2">Catatan tindak lanjut pembelajaran</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b3_4_3" value="Dokumentasi pembahasan hasil penilaian" checked><label for="b3_4_3">Dokumentasi pembahasan hasil penilaian</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Hasil penilaian disampaikan secara terbuka melalui rapor, catatan refleksi, atau pertemuan. Informasi digunakan sebagai dasar bimbingan lanjutan.</textarea></td>
                         <td><textarea class="editable">Pendidik aktif membahas hasil penilaian, memberikan penjelasan mengenai capaian dan area yang perlu diperbaiki, serta mendorong penetapan target perbaikan.</textarea></td>
                     </tr>
@@ -303,12 +442,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b3_5_2" value="Dokumentasi presentasi hasil diskusi" checked><label for="b3_5_2">Dokumentasi presentasi hasil diskusi</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b3_5_3" value="Observasi partisipasi peserta didik dalam aktivitas analisis dan refleksi" checked><label for="b3_5_3">Observasi partisipasi peserta didik dalam aktivitas analisis dan refleksi</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pembelajaran memberi ruang untuk berdiskusi, menyampaikan pendapat, dan mengaitkan teori dengan pengalaman pribadi. Pendidik mendorong berpikir kritis dan reflektif.</textarea></td>
                         <td><textarea class="editable">Peserta didik aktif dalam diskusi dan analisis, mampu menghubungkan konsep dengan contoh kehidupan nyata. Pendidik memfasilitasi dengan pertanyaan pemantik.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 4: Pendidik Memfasilitasi Pembelajaran yang Efektif (Karakter & Kompetensi)</td>
+                        <td colspan="5">Butir 4: Pendidik Memfasilitasi Pembelajaran yang Efektif (Karakter & Kompetensi)</td>
                     </tr>
                     <tr class="data-row">
                         <td>Pembelajaran yang efektif dalam menguatkan keimanan dan ketakwaan peserta didik kepada Tuhan YME untuk membentuk akhlak yang mulia.</td>
@@ -316,6 +463,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b4_1_1" value="Observasi kegiatan keagamaan" checked><label for="b4_1_1">Observasi kegiatan keagamaan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b4_1_2" value="Dokumentasi partisipasi peserta didik dalam pengajian/doa bersama" checked><label for="b4_1_2">Dokumentasi partisipasi peserta didik dalam pengajian/doa bersama</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b4_1_3" value="Catatan guru mengenai penerapan nilai keimanan dalam pembelajaran" checked><label for="b4_1_3">Catatan guru mengenai penerapan nilai keimanan dalam pembelajaran</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Pembelajaran konsisten diawali dan diakhiri dengan doa bersama. Peserta didik dibiasakan berperilaku sopan, saling menghormati, dan menolong sesama sebagai penerapan nilai keimanan.</textarea></td>
                         <td><textarea class="editable">Peserta didik mengikuti kegiatan keagamaan dengan kesadaran dan antusias. Nilai religius terlihat dari sikap santun dan disiplin.</textarea></td>
@@ -327,6 +482,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b4_2_2" value="Catatan pelajaran IPS dan sejarah" checked><label for="b4_2_2">Catatan pelajaran IPS dan sejarah</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b4_2_3" value="Foto kegiatan pembelajaran lapangan" checked><label for="b4_2_3">Foto kegiatan pembelajaran lapangan</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pembelajaran IPS dan sejarah disertai kegiatan eksploratif (kunjungan edukatif). Kegiatan tersebut membuat peserta didik lebih memahami dan menghargai perjuangan bangsa dan kekayaan budaya.</textarea></td>
                         <td><textarea class="editable">Peserta didik aktif dalam diskusi sejarah dan budaya daerah, menunjukkan rasa ingin tahu tinggi saat kunjungan lapangan, menggambarkan tumbuhnya rasa bangga dan cinta tanah air.</textarea></td>
                     </tr>
@@ -336,6 +499,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b4_3_1" value="Lembar soal dan tugas bernalar" checked><label for="b4_3_1">Lembar soal dan tugas bernalar</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b4_3_2" value="Observasi diskusi kelas" checked><label for="b4_3_2">Observasi diskusi kelas</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b4_3_3" value="Catatan guru tentang aktivitas berpikir kritis peserta didik" checked><label for="b4_3_3">Catatan guru tentang aktivitas berpikir kritis peserta didik</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Peserta didik diberikan latihan soal berbasis analisis dan diskusi kelompok untuk mengasah berpikir kritis. Peserta didik terbantu karena belajar menemukan solusi melalui kerja sama dan argumentasi logis.</textarea></td>
                         <td><textarea class="editable">Peserta didik mampu menganalisis permasalahan secara sistematis, aktif berdiskusi, dan menyimpulkan. Kegiatan ini meningkatkan keterampilan bernalar.</textarea></td>
@@ -347,18 +518,34 @@
                             <div class="checkbox-item"><input type="checkbox" id="b4_4_2" value="Observasi perilaku peserta didik" checked><label for="b4_4_2">Observasi perilaku peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b4_4_3" value="Dokumentasi kegiatan pembelajaran berbasis karakter" checked><label for="b4_4_3">Dokumentasi kegiatan pembelajaran berbasis karakter</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pendidik menyesuaikan metode dan materi dengan karakter dan kebutuhan warga belajar. Peserta didik dilatih untuk mandiri, beretika, dan berperilaku positif.</textarea></td>
                         <td><textarea class="editable">Peserta didik menunjukkan tanggung jawab dalam menyelesaikan tugas dan aktif dalam kegiatan kelompok, serta menunjukkan sikap saling menghormati dan gotong royong.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 5: Penyelenggara Menerapkan Budaya Refleksi dan Evaluasi Kinerja</td>
+                        <td colspan="5">Butir 5: Penyelenggara Menerapkan Budaya Refleksi dan Evaluasi Kinerja</td>
                     </tr>
                     <tr class="data-row">
                         <td>Fasilitasi kepada pendidik dan tenaga kependidikan untuk melakukan refleksi kinerja dalam rangka perbaikan pembelajaran.</td>
                         <td>
                             <div class="checkbox-item"><input type="checkbox" id="b5_1_1" value="Dokumen visi dan misi PKBM" checked><label for="b5_1_1">Dokumen visi dan misi PKBM</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b5_1_2" value="Hasil wawancara dengan peserta didik dan pemangku kepentingan" checked><label for="b5_1_2">Hasil wawancara dengan peserta didik dan pemangku kepentingan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Refleksi kinerja dilakukan setiap tiga bulan sekali melalui rapat evaluasi dan supervisi. Guru diberikan kesempatan menyampaikan kendala dan rencana tindak lanjut.</textarea></td>
                         <td><textarea class="editable">Rapat evaluasi diikuti oleh seluruh guru. Guru aktif berdiskusi dan menulis jurnal refleksi.</textarea></td>
@@ -368,6 +555,14 @@
                         <td>
                             <div class="checkbox-item"><input type="checkbox" id="b5_2_1" value="Dokumen kerja sama dengan mitra dan desa" checked><label for="b5_2_1">Dokumen kerja sama dengan mitra dan desa</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b5_2_2" value="Foto kegiatan magang dan pelatihan" checked><label for="b5_2_2">Foto kegiatan magang dan pelatihan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Evaluasi kinerja dilaksanakan bersama antara penyelenggara dan pendidik untuk memastikan peningkatan kualitas pembelajaran.</textarea></td>
                         <td><textarea class="editable">Adanya kegiatan evaluasi kinerja dengan instrumen supervisi. Hasilnya digunakan untuk memperbaiki strategi pembelajaran.</textarea></td>
@@ -379,6 +574,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b5_3_2" value="Notulen rapat refleksi yang melibatkan pemangku kepentingan" checked><label for="b5_3_2">Notulen rapat refleksi yang melibatkan pemangku kepentingan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b5_3_3" value="Instrumen evaluasi yang digunakan" checked><label for="b5_3_3">Instrumen evaluasi yang digunakan</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Guru mengikuti berbagai kegiatan pengembangan profesional (pelatihan, workshop, lomba). Beberapa guru memperoleh sertifikat dan penghargaan.</textarea></td>
                         <td><textarea class="editable">Dokumentasi kegiatan pelatihan dan sertifikat penghargaan tersedia. Guru mengimplementasikan hasil pelatihan dalam pembelajaran.</textarea></td>
                     </tr>
@@ -389,18 +592,34 @@
                             <div class="checkbox-item"><input type="checkbox" id="b5_4_2" value="Notulen rapat perencanaan" checked><label for="b5_4_2">Notulen rapat perencanaan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b5_4_3" value="Laporan hasil refleksi sebelumnya" checked><label for="b5_4_3">Laporan hasil refleksi sebelumnya</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pemberian penghargaan dan sanksi dilakukan secara transparan dan berdasarkan kinerja nyata guru.</textarea></td>
                         <td><textarea class="editable">Adanya sistem penghargaan dan rapat penilaian kinerja yang dilaksanakan secara terbuka dan partisipatif.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 6: Penyelenggara Menghadirkan Layanan Belajar Partisipatif dan Kolaboratif</td>
+                        <td colspan="5">Butir 6: Penyelenggara Menghadirkan Layanan Belajar Partisipatif dan Kolaboratif</td>
                     </tr>
                     <tr class="data-row">
                         <td>Penyelenggara program pendidikan kesetaraan memiliki visi dan misi yang jelas serta mengkomunikasikannya kepada para pemangku kepentingan.</td>
                         <td>
                             <div class="checkbox-item"><input type="checkbox" id="b6_1_1" value="Dokumen visi dan misi PKBM" checked><label for="b6_1_1">Dokumen visi dan misi PKBM</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b6_1_2" value="Hasil wawancara dengan peserta didik dan pemangku kepentingan" checked><label for="b6_1_2">Hasil wawancara dengan peserta didik dan pemangku kepentingan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Visi dan misi disosialisasikan melalui kegiatan orientasi dan pertemuan rutin. Semua pemangku kepentingan memahami arah dan tujuan lembaga.</textarea></td>
                         <td><textarea class="editable">Papan visi dan misi terpajang di ruang utama PKBM dan disampaikan dalam setiap kegiatan pembukaan program pembelajaran.</textarea></td>
@@ -412,6 +631,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b6_2_2" value="Foto kegiatan magang dan pelatihan" checked><label for="b6_2_2">Foto kegiatan magang dan pelatihan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b6_2_3" value="Dokumen pengadaan buku perpustakaan" checked><label for="b6_2_3">Dokumen pengadaan buku perpustakaan</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Lembaga menjalin kemitraan dengan Desa Margahurif, Bandung Cloth Project, dan beberapa dunia usaha untuk program ATS, magang, dan pengadaan buku.</textarea></td>
                         <td><textarea class="editable">Observasi memperlihatkan kegiatan pelatihan desain kaos, dokumentasi magang, dan buku dari mitra. Keterlibatan aktif peserta didik dan mitra terlihat.</textarea></td>
                     </tr>
@@ -421,6 +648,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b6_3_1" value="Hasil evaluasi berbasis data" checked><label for="b6_3_1">Hasil evaluasi berbasis data</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b6_3_2" value="Notulen rapat refleksi yang melibatkan pemangku kepentingan" checked><label for="b6_3_2">Notulen rapat refleksi yang melibatkan pemangku kepentingan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b6_3_3" value="Instrumen evaluasi yang digunakan" checked><label for="b6_3_3">Instrumen evaluasi yang digunakan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Evaluasi dan refleksi dilakukan secara berkala melibatkan guru, peserta didik, dan perwakilan masyarakat untuk memperbaiki layanan pendidikan.</textarea></td>
                         <td><textarea class="editable">Rapat refleksi menggunakan data kehadiran, hasil belajar, dan umpan balik peserta didik sebagai dasar pengambilan keputusan.</textarea></td>
@@ -432,17 +667,33 @@
                             <div class="checkbox-item"><input type="checkbox" id="b6_4_2" value="Notulen rapat perencanaan" checked><label for="b6_4_2">Notulen rapat perencanaan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b6_4_3" value="Laporan hasil refleksi sebelumnya" checked><label for="b6_4_3">Laporan hasil refleksi sebelumnya</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Penyusunan rencana kegiatan tahunan mengacu pada hasil refleksi tahun sebelumnya untuk memastikan program relevan dengan kebutuhan warga belajar.</textarea></td>
                         <td><textarea class="editable">Dokumen rencana kerja tahunan memuat tindak lanjut hasil evaluasi. Kegiatan disesuaikan dengan capaian dan kebutuhan pembelajaran.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 7: Pengelolaan Anggaran Transparan dan Akuntabel</td>
+                        <td colspan="5">Butir 7: Pengelolaan Anggaran Transparan dan Akuntabel</td>
                     </tr>
                     <tr class="data-row">
                         <td>Anggaran program pendidikan kesetaraan dilaksanakan sesuai dengan perencanaan tahunan.</td>
                         <td>
                             <div class="checkbox-item"><input type="checkbox" id="b7_1_1" value="Dokumen pengelolaan anggaran sesuai perencanaan tahunan" checked><label for="b7_1_1">Dokumen pengelolaan anggaran sesuai perencanaan tahunan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Anggaran dikelola berdasarkan rencana tahunan. Setiap kegiatan dan pengeluaran mengikuti prioritas program, sehingga penggunaannya tepat sasaran.</textarea></td>
                         <td><textarea class="editable">Adanya dokumen Rencana Kegiatan dan Anggaran Tahunan (RKAT) sebagai acuan. Pengeluaran tercatat rapi dan sesuai rencana.</textarea></td>
@@ -452,6 +703,14 @@
                         <td>
                             <div class="checkbox-item"><input type="checkbox" id="b7_2_1" value="Dokumen rencana anggaran program pendidikan kesetaraan" checked><label for="b7_2_1">Dokumen rencana anggaran program pendidikan kesetaraan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b7_2_2" value="Bukti pengadaan sarana dan prasarana" checked><label for="b7_2_2">Bukti pengadaan sarana dan prasarana</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Sumber pendanaan dari APBN (BOS), bantuan APBD, dan dukungan desa (laptop/server). Setiap alokasi dana dicatat untuk transparansi.</textarea></td>
                         <td><textarea class="editable">Dokumen menunjukkan rincian anggaran yang jelas, termasuk sumber dana dan penggunaannya. Bukti pengadaan sarana dan prasarana tersedia.</textarea></td>
@@ -463,12 +722,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b7_3_2" value="Laporan pemanfaatan anggaran ke yayasan per semester" checked><label for="b7_3_2">Laporan pemanfaatan anggaran ke yayasan per semester</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b7_3_3" value="Notulen rapat penyampaian laporan" checked><label for="b7_3_3">Notulen rapat penyampaian laporan</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pelaporan anggaran dilakukan secara berkala (Desember ke Dinas Pendidikan Kabupaten bidang PNF dan setiap semester ke yayasan) untuk menjaga transparansi dan akuntabilitas.</textarea></td>
                         <td><textarea class="editable">Adanya laporan tertulis pemanfaatan anggaran dan notulen rapat penyampaian laporan yang tersimpan baik dan dapat diakses.</textarea></td>
                     </tr>
                     
                     <tr class="butir-header">
-                        <td colspan="4">Butir 8: Pengelolaan Sarana dan Prasarana</td>
+                        <td colspan="5">Butir 8: Pengelolaan Sarana dan Prasarana</td>
                     </tr>
                     <tr class="data-row">
                         <td>Pemenuhan sarana dan prasarana yang sesuai dengan kebutuhan belajar peserta didik (dapat disediakan secara mandiri maupun bermitra).</td>
@@ -476,6 +743,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b8_1_1" value="Dokumen pengadaan sarana dan prasarana" checked><label for="b8_1_1">Dokumen pengadaan sarana dan prasarana</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b8_1_2" value="Bukti pemberian laptop dan server oleh APBD" checked><label for="b8_1_2">Bukti pemberian laptop dan server oleh APBD</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b8_1_3" value="Inventaris sarana dan prasarana" checked><label for="b8_1_3">Inventaris sarana dan prasarana</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Sarana dan prasarana disediakan sesuai kebutuhan, baik secara mandiri maupun bermitra (contoh: bantuan laptop dan server dari APBD).</textarea></td>
                         <td><textarea class="editable">Sarana dan prasarana (laptop, server, meja, kursi) tersedia dan digunakan efektif. Dokumen inventaris dan bukti pengadaan tertata rapi.</textarea></td>
@@ -487,12 +762,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b8_2_2" value="Laporan pengelolaan sarana dan prasarana" checked><label for="b8_2_2">Laporan pengelolaan sarana dan prasarana</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b8_2_3" value="Inventarisasi kondisi sarana dan prasarana" checked><label for="b8_2_3">Inventarisasi kondisi sarana dan prasarana</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Sarana dan prasarana dikelola optimal melalui perawatan rutin dan pencatatan berkala. Fasilitas diperiksa untuk memastikan kelayakan.</textarea></td>
                         <td><textarea class="editable">Adanya kegiatan perawatan dan perbaikan fasilitas. Ruang kelas dan peralatan dalam kondisi baik dan siap pakai, sesuai laporan pengelolaan.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 9: Pengembangan Kurikulum</td>
+                        <td colspan="5">Butir 9: Pengembangan Kurikulum</td>
                     </tr>
                     <tr class="data-row">
                         <td>Kepemilikan kurikulum program pendidikan kesetaraan sebagai rujukan penyelenggaraan proses pembelajaran.</td>
@@ -500,6 +783,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b9_1_1" value="Dokumen kurikulum program pendidikan kesetaraan" checked><label for="b9_1_1">Dokumen kurikulum program pendidikan kesetaraan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b9_1_2" value="Wawancara dengan kepala kurikulum" checked><label for="b9_1_2">Wawancara dengan kepala kurikulum</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b9_1_3" value="RPP atau modul ajar" checked><label for="b9_1_3">RPP atau modul ajar</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">PKBM telah memiliki dan menerapkan kurikulum program pendidikan kesetaraan sebagai pedoman utama untuk menyusun RPP, modul ajar, dan kegiatan belajar.</textarea></td>
                         <td><textarea class="editable">Pelaksanaan pembelajaran mengacu pada kurikulum. Dokumen kurikulum, RPP, dan modul ajar tersedia dan digunakan.</textarea></td>
@@ -511,6 +802,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b9_2_2" value="Notulen rapat evaluasi" checked><label for="b9_2_2">Notulen rapat evaluasi</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b9_2_3" value="Laporan hasil evaluasi penerapan kurikulum" checked><label for="b9_2_3">Laporan hasil evaluasi penerapan kurikulum</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Mekanisme evaluasi kurikulum dilakukan berkala melalui rapat dan supervisi untuk menilai efektivitas dan menyesuaikan materi dengan kebutuhan peserta didik.</textarea></td>
                         <td><textarea class="editable">Adanya pelaksanaan evaluasi (dibuktikan dengan notulen dan laporan). Hasil evaluasi digunakan untuk perbaikan proses belajar mengajar.</textarea></td>
                     </tr>
@@ -520,12 +819,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b9_3_1" value="Observasi proses belajar mengajar di kelas" checked><label for="b9_3_1">Observasi proses belajar mengajar di kelas</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b9_3_2" value="RPP atau modul ajar" checked><label for="b9_3_2">RPP atau modul ajar</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Kurikulum dinilai relevan dengan kebutuhan peserta didik dan visi-misi PKBM. Pendidik memanfaatkan media digital (YouTube, Google Classroom, infokus).</textarea></td>
                         <td><textarea class="editable">Pembelajaran mengintegrasikan berbagai media digital. Aktivitas belajar kontekstual dan sesuai karakteristik peserta didik, mencerminkan kurikulum yang adaptif.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 10: Iklim Kebinekaan</td>
+                        <td colspan="5">Butir 10: Iklim Kebinekaan</td>
                     </tr>
                     <tr class="data-row">
                         <td>Iklim lingkungan belajar membangun sikap positif terhadap keberagaman.</td>
@@ -533,6 +840,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b10_1_1" value="Observasi penggunaan mushola" checked><label for="b10_1_1">Observasi penggunaan mushola</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b10_1_2" value="Dokumentasi kegiatan keagamaan dan keberagaman di kelas" checked><label for="b10_1_2">Dokumentasi kegiatan keagamaan dan keberagaman di kelas</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b10_1_3" value="Catatan aktivitas peserta didik yang menunjukkan toleransi" checked><label for="b10_1_3">Catatan aktivitas peserta didik yang menunjukkan toleransi</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">PKBM aktif menanamkan sikap saling menghormati dan bekerja sama tanpa membedakan latar belakang. Mushola digunakan bersama, menunjukkan toleransi tinggi.</textarea></td>
                         <td><textarea class="editable">Peserta didik berinteraksi harmonis. Fasilitas (mSushola) digunakan secara bergantian dan tertib, mencerminkan suasana inklusif dan menghargai perbedaan.</textarea></td>
@@ -544,6 +859,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b10_2_2" value="Dokumentasi fasilitas yang disediakan untuk semua peserta didik" checked><label for="b10_2_2">Dokumentasi fasilitas yang disediakan untuk semua peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b10_2_3" value="Catatan kegiatan inklusif di kelas dan PKBM" checked><label for="b10_2_3">Catatan kegiatan inklusif di kelas dan PKBM</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Seluruh warga belajar diberikan kesempatan yang sama untuk beribadah dan berpartisipasi dalam kegiatan tanpa diskriminasi. Fasilitas dapat diakses secara adil.</textarea></td>
                         <td><textarea class="editable">Lingkungan belajar mendukung pelaksanaan kegiatan ibadah dan pembelajaran secara setara. Peserta didik memiliki kebebasan dan kenyamanan dalam menjalankan hak sipil masing-masing.</textarea></td>
                     </tr>
@@ -553,12 +876,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b10_3_1" value="Observasi kegiatan kelas dan pembelajaran" checked><label for="b10_3_1">Observasi kegiatan kelas dan pembelajaran</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b10_3_2" value="Dokumentasi peserta didik memimpin doa atau kegiatan secara setara" checked><label for="b10_3_2">Dokumentasi peserta didik memimpin doa atau kegiatan secara setara</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Pendidik memberikan perlakuan dan kesempatan yang sama kepada peserta didik laki-laki dan perempuan untuk berpartisipasi aktif (memimpin doa, diskusi, dll.).</textarea></td>
                         <td><textarea class="editable">Adanya partisipasi seimbang. Tidak ada diskriminasi peran, dan semua peserta didik percaya diri mengambil bagian.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 11: Lingkungan Belajar Inklusif</td>
+                        <td colspan="5">Butir 11: Lingkungan Belajar Inklusif</td>
                     </tr>
                     <tr class="data-row">
                         <td>Kebijakan dan/atau prosedur yang menghadirkan lingkungan belajar yang inklusif.</td>
@@ -566,6 +897,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b11_1_1" value="Dokumen kebijakan dan prosedur inklusif" checked><label for="b11_1_1">Dokumen kebijakan dan prosedur inklusif</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b11_1_2" value="RPP atau modul ajar yang mendukung praktik inklusif" checked><label for="b11_1_2">RPP atau modul ajar yang mendukung praktik inklusif</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b11_1_3" value="Observasi praktik pembelajaran inklusif di kelas" checked><label for="b11_1_3">Observasi praktik pembelajaran inklusif di kelas</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Lembaga memiliki kebijakan dan prosedur inklusif (penerimaan tanpa diskriminasi, RPP memperhatikan kebutuhan individu, dukungan bagi peserta didik dengan keterbatasan tertentu).</textarea></td>
                         <td><textarea class="editable">Pembelajaran berjalan inklusif. Peserta didik dari berbagai latar belakang berpartisipasi aktif. Pendidik menerapkan metode yang adaptif.</textarea></td>
@@ -577,12 +916,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b11_2_2" value="Notulen kegiatan partisipatif" checked><label for="b11_2_2">Notulen kegiatan partisipatif</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b11_2_3" value="Observasi partisipasi pendidik, orang tua, dan peserta didik dalam program inklusif" checked><label for="b11_2_3">Observasi partisipasi pendidik, orang tua, dan peserta didik dalam program inklusif</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">PKBM rutin menyelenggarakan sosialisasi dan pelatihan melibatkan semua pihak untuk meningkatkan pemahaman tentang inklusivitas dan kolaborasi.</textarea></td>
                         <td><textarea class="editable">Kegiatan pelatihan dan sosialisasi berjalan baik dan partisipatif. Semua pihak terlibat aktif, menunjukkan komitmen untuk lingkungan inklusif.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 12: Lingkungan Belajar Aman Secara Psikis</td>
+                        <td colspan="5">Butir 12: Lingkungan Belajar Aman Secara Psikis</td>
                     </tr>
                     <tr class="data-row">
                         <td>Kebijakan dalam pencegahan dan penanganan perundungan dan kekerasan.</td>
@@ -590,6 +937,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b12_1_1" value="Verbal dari kepala sekolah mengenai kebijakan anti-bullying" checked><label for="b12_1_1">Verbal dari kepala sekolah mengenai kebijakan anti-bullying</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b12_1_2" value="Poster anti-bullying yang dipasang di lingkungan sekolah" checked><label for="b12_1_2">Poster anti-bullying yang dipasang di lingkungan sekolah</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b12_1_3" value="Catatan observasi implementasi kebijakan" checked><label for="b12_1_3">Catatan observasi implementasi kebijakan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Lembaga memiliki kebijakan jelas dalam pencegahan dan penanganan perundungan/kekerasan, disampaikan melalui pertemuan rutin dan diperkuat media edukatif.</textarea></td>
                         <td><textarea class="editable">Lingkungan belajar aman dan kondusif. Terdapat poster anti-bullying. Peserta didik menunjukkan sikap saling menghargai.</textarea></td>
@@ -601,12 +956,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b12_2_2" value="Notulen kegiatan edukasi dan workshop terkait" checked><label for="b12_2_2">Notulen kegiatan edukasi dan workshop terkait</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b12_2_3" value="Observasi partisipasi peserta didik dan pendidik dalam program" checked><label for="b12_2_3">Observasi partisipasi peserta didik dan pendidik dalam program</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">PKBM melaksanakan program (sosialisasi, pelatihan etika pergaulan, kegiatan edukatif) melibatkan semua pihak untuk mencegah perundungan.</textarea></td>
                         <td><textarea class="editable">Sosialisasi dan edukasi diikuti aktif. Peserta didik antusias dalam diskusi dan simulasi, menunjukkan kesadaran pentingnya lingkungan aman.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 13: Keselamatan Peserta Didik, Pendidik, dan Tenaga Kependidikan</td>
+                        <td colspan="5">Butir 13: Keselamatan Peserta Didik, Pendidik, dan Tenaga Kependidikan</td>
                     </tr>
                     <tr class="data-row">
                         <td>Iklim Lingkungan belajar yang menjaga keselamatan warga satuan Pendidikan khususnya pada program Pendidikan kesetaraan.</td>
@@ -614,6 +977,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b13_1_1" value="Poster keselamatan di ruang kelas dan lingkungan sekolah" checked><label for="b13_1_1">Poster keselamatan di ruang kelas dan lingkungan sekolah</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b13_1_2" value="Verbal arahan kepala sekolah dan pendidik" checked><label for="b13_1_2">Verbal arahan kepala sekolah dan pendidik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b13_1_3" value="Observasi praktik menjaga keselamatan di lingkungan belajar" checked><label for="b13_1_3">Observasi praktik menjaga keselamatan di lingkungan belajar</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Lembaga menerapkan kebijakan dan budaya yang menekankan keselamatan. Pendidik rutin memberikan arahan terkait keamanan dan tata tertib.</textarea></td>
                         <td><textarea class="editable">Lingkungan belajar tertata baik dan aman. Terdapat poster keselamatan. Pendidik aktif mengingatkan peserta didik menjaga keamanan diri dan fasilitas.</textarea></td>
@@ -625,6 +996,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b13_2_2" value="Catatan prosedur P3K" checked><label for="b13_2_2">Catatan prosedur P3K</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b13_2_3" value="Observasi latihan atau simulasi P3K" checked><label for="b13_2_3">Observasi latihan atau simulasi P3K</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Tersedia ruang dan perlengkapan P3K memadai. Pendidik mengetahui prosedur dasar P3K dan berkoordinasi dengan Puskesmas terdekat.</textarea></td>
                         <td><textarea class="editable">Kotak dan perlengkapan P3K tersedia di ruang kelas dan kantor. Terdapat catatan prosedur P3K dan simulasi sederhana dilakukan berkala.</textarea></td>
                     </tr>
@@ -634,12 +1013,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b13_3_1" value="Dokumen prosedur tanggap darurat" checked><label for="b13_3_1">Dokumen prosedur tanggap darurat</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b13_3_2" value="Observasi latihan kesiapsiagaan dan simulasi bencana" checked><label for="b13_3_2">Observasi latihan kesiapsiagaan dan simulasi bencana</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">PKBM memiliki prosedur tanggap darurat dan melaksanakan sosialisasi kesiapsiagaan bencana. Pendidik dan peserta didik mengetahui langkah penyelamatan diri.</textarea></td>
                         <td><textarea class="editable">Peserta didik pernah mengikuti latihan simulasi bencana. Jalur evakuasi ditandai jelas, dan tersedia alat bantu sederhana (peluit, kotak darurat).</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 14: Lingkungan Sehat dan Program Kesehatan Fisik & Mental</td>
+                        <td colspan="5">Butir 14: Lingkungan Sehat dan Program Kesehatan Fisik & Mental</td>
                     </tr>
                     <tr class="data-row">
                         <td>Iklim lingkungan belajar membangun pola hidup bersih dan sehat.</td>
@@ -647,6 +1034,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b14_1_1" value="Observasi aktivitas membersihkan kelas setelah belajar" checked><label for="b14_1_1">Observasi aktivitas membersihkan kelas setelah belajar</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b14_1_2" value="Dokumentasi kegiatan kebersihan kelas" checked><label for="b14_1_2">Dokumentasi kegiatan kebersihan kelas</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b14_1_3" value="Catatan kegiatan harian peserta didik" checked><label for="b14_1_3">Catatan kegiatan harian peserta didik</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Lembaga rutin mengajak peserta didik menjaga kebersihan lingkungan belajar setiap akhir sesi sebagai pembiasaan hidup bersih dan tanggung jawab.</textarea></td>
                         <td><textarea class="editable">Peserta didik aktif menyapu, merapikan, dan menjaga kebersihan ruang belajar. Lingkungan kelas terawat dan bersih.</textarea></td>
@@ -658,6 +1053,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b14_2_2" value="Catatan kegiatan pendampingan psikologis" checked><label for="b14_2_2">Catatan kegiatan pendampingan psikologis</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b14_2_3" value="Observasi partisipasi warga belajar dalam program kesehatan mental" checked><label for="b14_2_3">Observasi partisipasi warga belajar dalam program kesehatan mental</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">PKBM memiliki program pendampingan dan sosialisasi fokus pada kesejahteraan mental (sesi berbagi pengalaman, kegiatan reflektif, motivasi).</textarea></td>
                         <td><textarea class="editable">Adanya kegiatan kelompok refleksi dan konseling sederhana. Peserta didik antusias dan merasa nyaman berbagi cerita.</textarea></td>
                     </tr>
@@ -668,12 +1071,20 @@
                             <div class="checkbox-item"><input type="checkbox" id="b14_3_2" value="Foto atau dokumentasi kegiatan penyuluhan" checked><label for="b14_3_2">Foto atau dokumentasi kegiatan penyuluhan</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b14_3_3" value="Observasi pelaksanaan edukasi di kelas" checked><label for="b14_3_3">Observasi pelaksanaan edukasi di kelas</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">PKBM rutin memberikan edukasi bahaya adiksi dan pentingnya kesehatan reproduksi melalui penyuluhan, pemutaran video edukatif, dan diskusi interaktif.</textarea></td>
                         <td><textarea class="editable">Kegiatan penyuluhan berlangsung aktif dengan partisipasi peserta didik. Materi disampaikan sederhana dan mudah dipahami.</textarea></td>
                     </tr>
 
                     <tr class="butir-header">
-                        <td colspan="4">Butir 15: Keterampilan Lulusan/Peserta Didik</td>
+                        <td colspan="5">Butir 15: Keterampilan Lulusan/Peserta Didik</td>
                     </tr>
                     <tr class="data-row">
                         <td>Menunjukkan kemampuan menyampaikan gagasan.</td>
@@ -681,6 +1092,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b15_1_1" value="Observasi presentasi peserta didik" checked><label for="b15_1_1">Observasi presentasi peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b15_1_2" value="Catatan hasil diskusi kelompok" checked><label for="b15_1_2">Catatan hasil diskusi kelompok</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b15_1_3" value="Dokumentasi video/audio penyampaian gagasan" checked><label for="b15_1_3">Dokumentasi video/audio penyampaian gagasan</label></div>
+                        </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
                         </td>
                         <td><textarea class="editable">Peserta didik mampu mengemukakan pendapat dan ide secara sistematis, dilatih berbicara di depan dengan bahasa yang sopan dan percaya diri.</textarea></td>
                         <td><textarea class="editable">Peserta didik aktif menyampaikan gagasan saat diskusi kelompok/presentasi. Mampu menjelaskan ide dengan struktur jelas dan bahasa mudah dipahami.</textarea></td>
@@ -692,6 +1111,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b15_2_2" value="Foto pameran atau hasil penjualan karya" checked><label for="b15_2_2">Foto pameran atau hasil penjualan karya</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b15_2_3" value="Catatan kegiatan kewirausahaan atau proyek kreatif" checked><label for="b15_2_3">Catatan kegiatan kewirausahaan atau proyek kreatif</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Peserta didik menunjukkan kreativitas menghasilkan karya (kerajinan, produk kewirausahaan, desain) yang memiliki nilai guna.</textarea></td>
                         <td><textarea class="editable">Peserta didik mampu membuat produk inovatif (kerajinan, buket, desain) yang dipamerkan dan sebagian dijual saat pameran sekolah.</textarea></td>
                     </tr>
@@ -702,6 +1129,14 @@
                             <div class="checkbox-item"><input type="checkbox" id="b15_3_2" value="Dokumen tugas mandiri peserta didik" checked><label for="b15_3_2">Dokumen tugas mandiri peserta didik</label></div>
                             <div class="checkbox-item"><input type="checkbox" id="b15_3_3" value="Catatan keterlibatan alumni atau warga belajar dalam program sosial" checked><label for="b15_3_3">Catatan keterlibatan alumni atau warga belajar dalam program sosial</label></div>
                         </td>
+                        <td>
+                            <select class="level-kinerja">
+                                <option value="4">Sangat Baik</option>
+                                <option value="3" selected>Baik</option>
+                                <option value="2">Cukup</option>
+                                <option value="1">Kurang</option>
+                            </select>
+                        </td>
                         <td><textarea class="editable">Peserta didik dilatih bertanggung jawab dan mandiri, serta terlibat dalam kegiatan sosial masyarakat (gotong royong, kegiatan desa).</textarea></td>
                         <td><textarea class="editable">Peserta didik mampu bekerja mandiri dalam tugas-tugasnya dan aktif dalam kegiatan masyarakat. Mereka menunjukkan inisiatif dan rasa tanggung jawab.</textarea></td>
                     </tr>
@@ -710,10 +1145,58 @@
             </table>
         </div>
 
-        <button id="exportButton" class="export-button">Ekspor ke Word (.doc)</button>
+        <div class="button-group">
+            <button id="calculateButton" class="calculate-button">Hitung Nilai & Grade Akhir</button>
+            <button id="exportButton" class="export-button">Ekspor ke Word (.doc)</button>
+        </div>
+        
+        <div id="resultContainer" class="result-container">
+            <h3>Hasil Akhir Akreditasi</h3>
+            <p><strong>Nilai Rata-rata:</strong> <span id="finalScore">0.00</span></p>
+            <p><strong>Grade:</strong> <span id="finalGrade" style="font-weight: bold; color: #d9534f;">TT</span></p>
+        </div>
     </div>
 
     <script>
+        // --- Fungsi untuk Menghitung Nilai ---
+        document.getElementById('calculateButton').addEventListener('click', function() {
+            const levels = document.querySelectorAll('select.level-kinerja');
+            let totalScore = 0;
+            let count = 0;
+
+            levels.forEach(select => {
+                totalScore += parseFloat(select.value);
+                count++;
+            });
+
+            const averageScore = totalScore / count;
+            let grade = 'TT';
+            let gradeColor = '#d9534f'; // Merah untuk TT
+
+            if (averageScore > 3.5) {
+                grade = 'A';
+                gradeColor = '#28a745'; // Hijau untuk A
+            } else if (averageScore > 2.5) {
+                grade = 'B';
+                gradeColor = '#007bff'; // Biru untuk B
+            } else if (averageScore > 1.5) {
+                grade = 'C';
+                gradeColor = '#fd7e14'; // Orange untuk C
+            }
+
+            const finalScoreEl = document.getElementById('finalScore');
+            const finalGradeEl = document.getElementById('finalGrade');
+            const resultContainerEl = document.getElementById('resultContainer');
+
+            finalScoreEl.innerText = averageScore.toFixed(2); // Tampilkan 2 angka desimal
+            finalGradeEl.innerText = grade;
+            finalGradeEl.style.color = gradeColor;
+            
+            resultContainerEl.style.display = 'block'; // Tampilkan hasil
+        });
+
+
+        // --- Fungsi untuk Ekspor ke Word ---
         document.getElementById('exportButton').addEventListener('click', function() {
             // 1. Ambil nilai dari input fields header
             const namaAsesor = document.getElementById('namaAsesor').value;
@@ -731,8 +1214,9 @@
                         <tr style="background-color: #e0e0e0; font-weight: bold; text-align: center;">
                             <th style="padding: 8px; width: 20%;">Indikator</th>
                             <th style="padding: 8px; width: 20%;">Bukti/Dokumentasi yang digunakan sebagai bukti</th>
-                            <th style="padding: 8px; width: 30%;">Rekap Hasil Wawancara</th>
-                            <th style="padding: 8px; width: 30%;">Rekap Hasil Observasi</th>
+                            <th style="padding: 8px; width: 10%;">Level Kinerja</th>
+                            <th style="padding: 8px; width: 25%;">Rekap Hasil Wawancara</th>
+                            <th style="padding: 8px; width: 25%;">Rekap Hasil Observasi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -745,7 +1229,7 @@
                     // Ini adalah baris header Butir
                     tableContent += `
                         <tr class="butir-header" style="background-color: #d9edf7;">
-                            <td colspan="4" style="padding: 8px; font-weight: bold;"><strong>${row.cells[0].innerText}</strong></td>
+                            <td colspan="5" style="padding: 8px; font-weight: bold;"><strong>${row.cells[0].innerText}</strong></td>
                         </tr>
                     `;
                 } else if (row.classList.contains('data-row')) {
@@ -764,14 +1248,19 @@
                     }
                     buktiList += '</ol>';
 
+                    // Ambil data Level Kinerja
+                    const levelSelect = row.cells[2].querySelector('select.level-kinerja');
+                    const levelKinerja = levelSelect.options[levelSelect.selectedIndex].text;
+
                     // Ambil data dari textarea dan ganti newline
-                    const wawancara = row.cells[2].querySelector('textarea').value.replace(/\n/g, '<br>');
-                    const observasi = row.cells[3].querySelector('textarea').value.replace(/\n/g, '<br>');
+                    const wawancara = row.cells[3].querySelector('textarea').value.replace(/\n/g, '<br>');
+                    const observasi = row.cells[4].querySelector('textarea').value.replace(/\n/g, '<br>');
 
                     tableContent += `
                         <tr>
                             <td style="padding: 8px; vertical-align: top;">${indikator}</td>
                             <td style="padding: 8px; vertical-align: top;">${buktiList}</td>
+                            <td style="padding: 8px; vertical-align: top; font-weight: bold;">${levelKinerja}</td>
                             <td style="padding: 8px; vertical-align: top;">${wawancara}</td>
                             <td style="padding: 8px; vertical-align: top;">${observasi}</td>
                         </tr>
@@ -781,7 +1270,25 @@
 
             tableContent += '</tbody></table>';
 
-            // 4. Gabungkan semua konten HTML untuk file Word
+            // 4. Ambil Hasil Akhir (jika sudah dihitung)
+            const finalScoreText = document.getElementById('finalScore').innerText;
+            const finalGradeText = document.getElementById('finalGrade').innerText;
+            const resultContainerVisible = document.getElementById('resultContainer').style.display;
+            
+            let finalResultHtml = '';
+            if (resultContainerVisible !== 'none') {
+                finalResultHtml = `
+                    <br>
+                    <hr>
+                    <h3 style="text-align: center;">Hasil Akhir Akreditasi</h3>
+                    <div class="header-info" style="font-size: 12pt; text-align: center;">
+                        <p><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p>
+                        <p><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p>
+                    </div>
+                `;
+            }
+
+            // 5. Gabungkan semua konten HTML untuk file Word
             const htmlContent = `
                 <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
                 <head>
@@ -838,12 +1345,14 @@
                     <hr style="margin: 20px 0;">
 
                     ${tableContent}
+                    
+                    ${finalResultHtml}
 
                 </body>
                 </html>
             `;
 
-            // 5. Buat dan picu tautan unduhan
+            // 6. Buat dan picu tautan unduhan
             const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
             const fileDownload = document.createElement("a");
             document.body.appendChild(fileDownload);
