@@ -447,7 +447,7 @@
         <p class="footer-text">www.kangruli.web.id</p>
     </div>
 
-    <script>
+<script>
     // --- DATA INSTRUMEN (TEMPLATE) ---
     // (Data instrumentData tetap sama seperti sebelumnya)
     const instrumentData = {
@@ -472,11 +472,10 @@
       "15-3": { bukti: [{id:"b15_3_1", val:"Observasi partisipasi (kegiatan masyarakat/magang)"}, {id:"b15_3_2", val:"Dokumen tugas mandiri (portofolio, proyek)"}, {id:"b15_3_3", val:"Catatan/Testimoni keterlibatan alumni/warga belajar"}, {id:"b15_3_4", val:"Tracer study lulusan (jika ada)"}], wawancara: "Peserta didik/lulusan terbukti sangat mandiri, bertanggung jawab, dan memiliki inisiatif tinggi. Mereka tidak hanya fokus pada akademik, tetapi terlibat aktif dalam kegiatan sosial masyarakat (gotong royong, karang taruna) atau dunia kerja (magang/wirausaha).", observasi: "Peserta didik mampu bekerja mandiri dalam tugas-tugas kompleks tanpa supervisi ketat. Mereka menunjukkan inisiatif tinggi, rasa tanggung jawab sosial, dan keterampilan adaptasi yang sangat baik di lingkungan belajar maupun di luar (masyarakat/magang)." }
     };
 
-
     // --- FUNGSI GENERATE INPUT PER PROGRAM ---
     function generateProgramInputs(butir, indikatorIdx) {
         const data = instrumentData[`${butir}-${indikatorIdx}`];
-        if (!data) return; // Fallback
+        if (!data) return;
 
         const programs = ['A', 'B', 'C'];
         let buktiHtml = '';
@@ -488,11 +487,9 @@
             const progLower = prog.toLowerCase();
             const uniquePrefix = `b${butir}_${indikatorIdx}_${progLower}_`;
 
-            // Wrapper Div per Program
             const programWrapperStart = `<div class="program-input paket-${progLower}" data-program="${prog}" style="display: none;"><h4>Paket ${prog}</h4>`;
             const programWrapperEnd = `</div>`;
 
-            // Bukti Checkboxes
             let currentBuktiHtml = '<div>';
             data.bukti.forEach((item, index) => {
                 const cbId = `${uniquePrefix}bukti_${index + 1}`;
@@ -501,31 +498,28 @@
             currentBuktiHtml += '</div>';
             buktiHtml += programWrapperStart + currentBuktiHtml + programWrapperEnd;
 
-            // Level Kinerja Dropdown
             let currentLevelHtml = `<div><select class="level-kinerja" id="${uniquePrefix}level">
-                <option value="4" selected>Sangat Baik</option>
-                <option value="3">Baik</option>
-                <option value="2">Cukup</option>
-                <option value="1">Kurang</option>
+                <option value="4" selected>Sangat Baik</option><option value="3">Baik</option><option value="2">Cukup</option><option value="1">Kurang</option>
             </select></div>`;
             levelHtml += programWrapperStart + currentLevelHtml + programWrapperEnd;
 
-            // Wawancara Textarea
             let currentWawancaraHtml = `<div><textarea class="editable" id="${uniquePrefix}wawancara">${data.wawancara}</textarea></div>`;
             wawancaraHtml += programWrapperStart + currentWawancaraHtml + programWrapperEnd;
 
-            // Observasi Textarea
             let currentObservasiHtml = `<div><textarea class="editable" id="${uniquePrefix}observasi">${data.observasi}</textarea></div>`;
             observasiHtml += programWrapperStart + currentObservasiHtml + programWrapperEnd;
         });
 
-        // Inject HTML into containers ONCE
-        document.getElementById(`bukti-${butir}-${indikatorIdx}`).innerHTML = buktiHtml;
-        document.getElementById(`level-${butir}-${indikatorIdx}`).innerHTML = levelHtml;
-        document.getElementById(`wawancara-${butir}-${indikatorIdx}`).innerHTML = wawancaraHtml;
-        document.getElementById(`observasi-${butir}-${indikatorIdx}`).innerHTML = observasiHtml;
-    }
+        const buktiContainer = document.getElementById(`bukti-${butir}-${indikatorIdx}`);
+        const levelContainer = document.getElementById(`level-${butir}-${indikatorIdx}`);
+        const wawancaraContainer = document.getElementById(`wawancara-${butir}-${indikatorIdx}`);
+        const observasiContainer = document.getElementById(`observasi-${butir}-${indikatorIdx}`);
 
+        if(buktiContainer) buktiContainer.innerHTML = buktiHtml;
+        if(levelContainer) levelContainer.innerHTML = levelHtml;
+        if(wawancaraContainer) wawancaraContainer.innerHTML = wawancaraHtml;
+        if(observasiContainer) observasiContainer.innerHTML = observasiHtml;
+    }
 
     // --- FUNGSI TOGGLE VISIBILITY ---
     function toggleProgramVisibility() {
@@ -538,14 +532,9 @@
 
         programInputDivs.forEach(div => {
             const programDiv = div.getAttribute('data-program');
-            if (selectedPrograms.includes(programDiv)) {
-                div.style.display = 'block'; // Tampilkan jika programnya dipilih
-            } else {
-                div.style.display = 'none'; // Sembunyikan jika tidak dipilih
-            }
+            div.style.display = selectedPrograms.includes(programDiv) ? 'block' : 'none';
         });
     }
-
 
     // --- FUNGSI UTAMA DAN PEMBATASAN AKSES ---
     function jalankanFungsiIntiAplikasi() {
@@ -577,19 +566,15 @@
     window.addEventListener('load', function() {
         // 1. Generate dynamic inputs first
         const butirProgram = [1, 2, 3, 4, 15];
-        // Pastikan jumlah indikator ini akurat sesuai tabel HTML Anda
         const indikatorCounts = { 1: 4, 2: 3, 3: 5, 4: 4, 15: 3 };
         butirProgram.forEach(butir => {
              for (let i = 1; i <= indikatorCounts[butir]; i++) {
-                 // Check if containers exist before calling
                  if (document.getElementById(`bukti-${butir}-${i}`)) {
                     generateProgramInputs(butir, i);
-                 } else {
-                    console.error(`Container not found for Butir ${butir}, Indikator ${i}`);
-                 }
+                 } else { console.error(`Container not found for Butir ${butir}, Indikator ${i}`); }
              }
         });
-        // 2. Initial visibility check based on checkboxes (usually none checked initially)
+        // 2. Initial visibility check
         toggleProgramVisibility();
 
         // 3. Then check usage limits
@@ -604,15 +589,12 @@
             tampilkanPesanLimit();
         } else {
             jalankanFungsiIntiAplikasi();
-            // Tandai penggunaan pertama HANYA jika belum donasi
-            if (sudahDonasi !== 'true') {
-                localStorage.setItem('pernahPakaiKangRuliApp', 'true');
-            }
+            if (sudahDonasi !== 'true') { localStorage.setItem('pernahPakaiKangRuliApp', 'true'); }
         }
     });
 
 
-    // --- FUNGSI PERHITUNGAN DAN EKSPOR (Disesuaikan) ---
+    // --- FUNGSI PERHITUNGAN DAN EKSPOR ---
     function attachActionListeners() {
         document.getElementById('calculateButton').addEventListener('click', function() {
             const levelsSatuan = document.querySelectorAll('tr[data-butir-group="satuan"] select.level-kinerja');
@@ -621,14 +603,8 @@
             let totalScore = 0;
             let count = 0;
 
-            levelsSatuan.forEach(select => {
-                totalScore += parseFloat(select.value);
-                count++;
-            });
-            levelsProgramVisible.forEach(select => {
-                totalScore += parseFloat(select.value);
-                count++;
-            });
+            levelsSatuan.forEach(select => { totalScore += parseFloat(select.value); count++; });
+            levelsProgramVisible.forEach(select => { totalScore += parseFloat(select.value); count++; });
 
             const averageScore = count > 0 ? (totalScore / count) : 0;
             let grade = 'TT';
@@ -638,10 +614,15 @@
             else if (averageScore > 2.5) { grade = 'B'; gradeColor = '#007bff'; }
             else if (averageScore > 1.5) { grade = 'C'; gradeColor = '#fd7e14'; }
 
-            document.getElementById('finalScore').innerText = averageScore.toFixed(2);
-            document.getElementById('finalGrade').innerText = grade;
-            document.getElementById('finalGrade').style.color = gradeColor;
-            document.getElementById('resultContainer').style.display = 'block';
+            const finalScoreEl = document.getElementById('finalScore');
+            const finalGradeEl = document.getElementById('finalGrade');
+            const resultContainerEl = document.getElementById('resultContainer');
+
+            finalScoreEl.innerText = averageScore.toFixed(2);
+            finalGradeEl.innerText = grade;
+            finalGradeEl.style.color = gradeColor;
+            resultContainerEl.style.display = 'block';
+            console.log("Calculation Done - Score:", averageScore.toFixed(2), "Grade:", grade); // Debugging Log
         });
 
         document.getElementById('exportButton').addEventListener('click', function() {
@@ -672,11 +653,12 @@
                         let combinedObservasi = '';
 
                         selectedPrograms.forEach(prog => {
+                             // Correctly select the divs for the current row and program
                             const programDivBukti = row.cells[1].querySelector(`.program-input[data-program="${prog}"]`);
                             const programDivWawancara = row.cells[3].querySelector(`.program-input[data-program="${prog}"]`);
                             const programDivObservasi = row.cells[4].querySelector(`.program-input[data-program="${prog}"]`);
 
-                            // Pastikan div program ada dan visible sebelum mengambil data
+
                             if (programDivBukti && programDivBukti.style.display !== 'none') {
                                 if (selectedPrograms.length > 1) combinedBukti += `<strong>Paket ${prog}:</strong>`;
                                 combinedBukti += '<ol style="margin: 0; padding-left: 20px;">';
@@ -702,7 +684,6 @@
                                  if (selectedPrograms.length > 1) combinedObservasi += '<br><br>';
                              }
                         });
-                        // Hapus <br><br> ekstra di akhir jika ada multiple program
                         if(selectedPrograms.length > 1) {
                             combinedWawancara = combinedWawancara.replace(/<br><br>$/, '');
                             combinedObservasi = combinedObservasi.replace(/<br><br>$/, '');
@@ -725,16 +706,30 @@
             });
             tableContent += '</tbody></table>';
 
-            // --- Sisa kode ekspor (hasil akhir, footer, generate file) tetap sama ---
-            const finalScoreText = document.getElementById('finalScore').innerText;
-            const finalGradeText = document.getElementById('finalGrade').innerText;
-            const resultContainerVisible = document.getElementById('resultContainer').style.display;
+            // --- Pembacaan Nilai Akhir (Revisi) ---
+            const finalScoreEl = document.getElementById('finalScore');
+            const finalGradeEl = document.getElementById('finalGrade');
+            const resultContainerEl = document.getElementById('resultContainer');
+
+            const finalScoreText = finalScoreEl ? finalScoreEl.innerText : '0.00';
+            const finalGradeText = finalGradeEl ? finalGradeEl.innerText : 'TT';
+            const resultContainerVisible = resultContainerEl && resultContainerEl.style.display === 'block';
+
+            console.log("Export - Reading Score:", finalScoreText); // Debug Log
+            console.log("Export - Reading Grade:", finalGradeText); // Debug Log
+            console.log("Export - Is Result Visible:", resultContainerVisible); // Debug Log
+
             let finalResultHtml = '';
-            if (resultContainerVisible !== 'none') {
+            if (resultContainerVisible && (finalScoreText !== '0.00' || finalGradeText !== 'TT')) {
                 finalResultHtml = `<br><hr><h3 style="text-align: center;">Hasil Akhir Akreditasi</h3><div class="header-info" style="font-size: 12pt; text-align: center;"><p style="margin: 5px 0;"><strong>Nilai Rata-rata:</strong> ${finalScoreText}</p><p style="margin: 5px 0;"><strong>Grade:</strong> <span style="font-weight: bold; font-size: 1.2em;">${finalGradeText}</span></p></div>`;
+            } else {
+                 console.log("Export - Skipping final result section because conditions not met."); // Debug Log
             }
+            // --- Akhir Revisi Pembacaan Nilai Akhir ---
+
             const wordFooter = `<br><br><p style="text-align: center; margin-top: 20px; font-style: italic; color: #555; font-size: 9pt;">www.kangruli.web.id</p>`;
             const htmlContent = `<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Rekapitulasi Akreditasi</title><style>@page Section1 { size: 8.5in 11.0in; margin: 1.0in 1.0in 1.0in 1.0in; mso-header-margin: .5in; mso-footer-margin: .5in; mso-paper-source: 0; } div.Section1 { page: Section1; } body { font-family: Arial, sans-serif; font-size: 10pt; } table { border-collapse: collapse; width: 100%; border: 1px solid #000; table-layout: fixed; word-wrap: break-word; } th, td { border: 1px solid #000; padding: 6px; vertical-align: top; } th { background-color: #f2f2f2; font-weight: bold; text-align: center; } .butir-header td { background-color: #d9edf7; font-weight: bold; } .header-info { font-size: 11pt; margin-bottom: 15px; } .header-info p { margin: 2px 0; } .header-info strong { width: 180px; display: inline-block; mso-width-percent: 0; } table colgroup col:nth-child(1) { width: 20%; } table colgroup col:nth-child(2) { width: 25%; } table colgroup col:nth-child(3) { width: 27.5%; } table colgroup col:nth-child(4) { width: 27.5%; }</style></head><body><div class="Section1"><h2 style="text-align: center;">Rekapitulasi Data Penggalian Akreditasi ${namaSatuan}</h2><h3 style="text-align: center; font-weight: normal; margin-top: -10px; color: #333;">www.kangruli.web.id</h3><div class="header-info"><p><strong>Nama Asesor</strong>: ${namaAsesor}</p><p><strong>NIA</strong>: ${nia}</p><p><strong>Nama Satuan Pendidikan</strong>: ${namaSatuan}</p><p><strong>NPSN</strong>: ${npsn}</p></div><hr style="margin: 20px 0;"><colgroup><col style="width:20%"><col style="width:25%"><col style="width:27.5%"><col style="width:27.5%"></colgroup>${tableContent}${finalResultHtml}${wordFooter}</div></body></html>`;
+
             const source = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(htmlContent);
             const fileDownload = document.createElement("a");
             document.body.appendChild(fileDownload);
